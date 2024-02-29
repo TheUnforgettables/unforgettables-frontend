@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom"
+import { useState } from "react"
+import "./App.css"
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import About from "./pages/About"
+import AddMember from "./pages/AddMember"
+import AddRecipe from "./pages/AddRecipe"
+import Cookbook  from "./pages/Cookbook"
+import EditRecipe  from "./pages/EditRecipe"
+import FamilyTree from "./pages/FamilyTree"
+import Home from "./pages/Home"
+import LogIn from "./pages/LogIn"
+import NotFound from "./pages/NotFound"
+import Potluck from "./pages/Potluck"
+import RecipeDetails from "./pages/RecipeDetails"
+import SignUp from "./pages/SignUp"
+import mockUsers from "./mockUsers"
+import mockRecipes from "./mockRecipes"
 
-function App() {
+const App = () => {
+  const [currentUser, setCurrentUser] = useState(mockUsers[0])
+  const [recipe, setRecipes] = useState(mockRecipes)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header currentUser={currentUser} />
+      <Routes> 
+        <Route path="/" element={<Home />} />
+        <Route path="/About" element={<About/>} />
+        <Route path="/AddMember" element={<AddMember />}  />
+        <Route path="/AddRecipe" element={<AddRecipe />}/>
+        <Route path="/Cookbook" element={<Cookbook />}/>
+        <Route path="/EditRecipe" element={<EditRecipe />}/>
+        <Route path="/FamilyTree" element={<FamilyTree />}/>
+        <Route path="/LogIn" element={<LogIn />}/>
+        <Route path="/Potluck" element={<Potluck />}/>
+        <Route path="/RecipeDetails" element={<RecipeDetails />}/>
+        <Route path="/SignUp" element={<SignUp/>} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </>
+  )
 }
 
-export default App;
+export default App

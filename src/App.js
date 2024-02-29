@@ -34,10 +34,10 @@ const App = () => {
         <Route path="/EditRecipe" element={<EditRecipe />}/>
         <Route path="/FamilyTree" element={<FamilyTree />}/>
         <Route path="/LogIn" element={<LogIn />}/>
-        <Route path="*" element={<NotFound />} />
         <Route path="/Potluck" element={<Potluck />}/>
         <Route path="/RecipeDetails" element={<RecipeDetails />}/>
         <Route path="/SignUp" element={<SignUp/>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>

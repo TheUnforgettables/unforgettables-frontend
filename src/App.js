@@ -6,8 +6,8 @@ import Footer from "./components/Footer"
 import About from "./pages/About"
 import AddMember from "./pages/AddMember"
 import AddRecipe from "./pages/AddRecipe"
-import Cookbook  from "./pages/Cookbook"
-import EditRecipe  from "./pages/EditRecipe"
+import Cookbook from "./pages/Cookbook"
+import EditRecipe from "./pages/EditRecipe"
 import FamilyTree from "./pages/FamilyTree"
 import Home from "./pages/Home"
 import LogIn from "./pages/LogIn"
@@ -25,18 +25,21 @@ const App = () => {
   return (
     <>
       <Header currentUser={currentUser} />
-      <Routes> 
+      <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/About" element={<About/>} />
-        <Route path="/AddMember" element={<AddMember />}  />
-        <Route path="/AddRecipe" element={<AddRecipe />}/>
-        <Route path="/Cookbook" element={<Cookbook />}/>
-        <Route path="/EditRecipe" element={<EditRecipe />}/>
-        <Route path="/FamilyTree" element={<FamilyTree />}/>
-        <Route path="/LogIn" element={<LogIn />}/>
-        <Route path="/Potluck" element={<Potluck potluck={recipe} />}/>
-        <Route path="/RecipeDetails/:id" element={<RecipeDetails recipeDetails={recipe} />}/>
-        <Route path="/SignUp" element={<SignUp/>} />
+        <Route path="/About" element={<About />} />
+        <Route path="/AddMember" element={<AddMember />} />
+        <Route path="/AddRecipe" element={<AddRecipe />} />
+        <Route path="/Cookbook" element={<Cookbook />} />
+        <Route path="/EditRecipe" element={<EditRecipe />} />
+        <Route path="/FamilyTree" element={<FamilyTree />} />
+        <Route path="/LogIn" element={<LogIn />} />
+        <Route path="/Potluck" element={<Potluck potluck={recipe} />} />
+        <Route
+          path="/RecipeDetails/:id"
+          element={<RecipeDetails recipeDetails={recipe} />}
+        />
+        <Route path="/SignUp" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

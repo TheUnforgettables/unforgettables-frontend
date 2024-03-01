@@ -9,12 +9,12 @@ import {
   Button,
 } from "reactstrap"
 
-
-const RecipeDetails = ({ recipeDetails}) => {
-  const { id } = useParams()
+const RecipeDetails = ({ recipeDetails = [] }) => {
+  let { id } = useParams()
   const currentRecipe = recipeDetails.find((recipe) => recipe.id === +id)
+  console.log(currentRecipe)
 
-  if (!RecipeDetails) {
+  if (!recipeDetails) {
     return <>Recipe not found!</>
   }
 
@@ -33,8 +33,7 @@ const RecipeDetails = ({ recipeDetails}) => {
                   <b>{currentRecipe?.recipe_name}</b>
                 </CardTitle>
                 <CardSubtitle>
-                  {currentRecipe?.description}, 
-                  {currentRecipe?.ingredients},
+                  {currentRecipe?.description},{currentRecipe?.ingredients},
                   {currentRecipe?.instructions}
                 </CardSubtitle>
               </div>

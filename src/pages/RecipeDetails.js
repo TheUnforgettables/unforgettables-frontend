@@ -12,7 +12,6 @@ import {
 const RecipeDetails = ({ recipeDetails = [] }) => {
   let { id } = useParams()
   const currentRecipe = recipeDetails.find((recipe) => recipe.id === +id)
-  console.log(currentRecipe)
 
   if (!recipeDetails) {
     return <>Recipe not found!</>

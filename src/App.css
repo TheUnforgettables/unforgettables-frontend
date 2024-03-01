@@ -1,3 +1,7 @@
+* {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: #fff;
+  }
 .logo {
   height: 50px;
 }
@@ -7,4 +11,35 @@ header {
   align-content: center;
   text-align: center;
   margin: auto;
+}
+video {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: -1;
+}
+.overlay {
+  padding: 13vw 6vw;
+  background-color: transparent;
+  z-index: 1;
+  width: 100%;
+}
+.title {
+  font-size: 50px;
+  font-weight: 600;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  letter-spacing: 4px;
+  width: 100%;
+}
+.not-found-background {
+  position: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
 }

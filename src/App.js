@@ -35,7 +35,7 @@ const App = () => {
         <Route path="/FamilyTree" element={<FamilyTree />}/>
         <Route path="/LogIn" element={<LogIn />}/>
         <Route path="/Potluck" element={<Potluck potluck={recipe} />}/>
-        <Route path="/RecipeDetails" element={<RecipeDetails />}/>
+        <Route path="/RecipeDetails/:id" element={<RecipeDetails recipeDetails={recipe} />}/>
         <Route path="/SignUp" element={<SignUp/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>

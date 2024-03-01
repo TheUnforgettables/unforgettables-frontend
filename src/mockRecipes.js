@@ -1,5 +1,6 @@
 let mockRecipes = [
   {
+    id: 1,
     recipe_name: "Grilled Salmon with Asparagus",
     description: "A delicious and healthy dish featuring grilled salmon fillets served with roasted asparagus.",
     ingredients: "Salmon fillets, Asparagus, Olive oil, Lemon, Garlic, Salt, Black pepper",
@@ -7,6 +8,7 @@ let mockRecipes = [
     public: true
   },
   {
+    id: 2,
     recipe_name: "Vegetarian Quinoa Salad",
     description: "A refreshing and nutritious salad made with cooked quinoa, mixed vegetables, and a zesty lemon dressing.",
     ingredients: "Quinoa, Cherry tomatoes, Cucumber, Bell peppers, Red onion, Fresh parsley, Lemon juice, Olive oil, Salt, Black pepper",
@@ -14,6 +16,7 @@ let mockRecipes = [
     public: true
   },
   {
+    id: 3,
     recipe_name: "Homemade Pizza Margherita",
     description: "A classic Italian pizza topped with fresh tomatoes, mozzarella cheese, basil leaves, and a drizzle of olive oil.",
     ingredients: "Pizza dough, Fresh tomatoes, Fresh mozzarella cheese, Fresh basil leaves, Olive oil, Salt, Black pepper",

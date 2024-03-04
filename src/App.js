@@ -30,7 +30,10 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
         <Route path="/AddMember" element={<AddMember />} />
-        <Route path="/AddRecipe" element={<AddRecipe currentUser={currentUser} />} />
+        <Route
+          path="/AddRecipe"
+          element={<AddRecipe currentUser={currentUser} />}
+        />
         <Route path="/Cookbook" element={<Cookbook />} />
         <Route path="/EditRecipe" element={<EditRecipe />} />
         <Route path="/FamilyTree" element={<FamilyTree />} />
@@ -42,7 +45,10 @@ const App = () => {
         />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/MyRecipes" element={<RecipeProtectedIndex myRecipes={recipe} />} />
+        <Route
+          path="/MyRecipes"
+          element={<RecipeProtectedIndex myRecipes={recipe} />}
+        />
       </Routes>
       <Footer />
     </>

@@ -17,6 +17,7 @@ import RecipeDetails from "./pages/RecipeDetails"
 import SignUp from "./pages/SignUp"
 import mockUsers from "./mockUsers"
 import mockRecipes from "./mockRecipes"
+import RecipeProtectedIndex from "./pages/RecipeProtectedIndex"
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(mockUsers[0])
@@ -41,6 +42,7 @@ const App = () => {
         />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/MyRecipes" element={<RecipeProtectedIndex myRecipes={recipe} />} />
       </Routes>
       <Footer />
     </>

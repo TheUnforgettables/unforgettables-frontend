@@ -26,28 +26,23 @@ describe("<RecipeProtectedIndex />", () => {
 
     render(
       <BrowserRouter>
-        <RecipeProtectedIndex
-          Recipes={userRecipes}
-          currentUser={currentUser}
-        />
+        <RecipeProtectedIndex recipes={userRecipes} currentUser={currentUser} />
       </BrowserRouter>
     )
   })
 
   it("renders without crashing", () => {
-    const element = screen.getByText("My Recipes")
+    const element = screen.getByRole("heading")
     expect(element).toBeInTheDocument()
   })
 
-  it("renders a button", () => {
+  it("renders a button with words", () => {
     render(
       <BrowserRouter>
         <RecipeProtectedIndex />
       </BrowserRouter>
     )
-    const heading = screen.getByRole('heading', { name: /my recipes:/i })
-    expect(
-      heading
-    ).toBeInTheDocument()
+    const button = screen.getByText(/More Details/i)
+    expect(button).toBeInTheDocument()
   })
 })

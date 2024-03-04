@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 const AddRecipe = ({ createRecipe, currentUser }) => {
   const navigate = useNavigate()
-  const [myRecipe, SetMyRecipe] = useState({
+  const [myRecipe, setMyRecipe] = useState({
     recipe_name: "",
     description: "",
     ingredients: "",
@@ -13,7 +13,7 @@ const AddRecipe = ({ createRecipe, currentUser }) => {
   })
 
   const handleChange = (e) => {
-    SetMyRecipe({ ...myRecipe, [e.target.name]: e.target.value })
+    setMyRecipe({ ...myRecipe, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = () => {

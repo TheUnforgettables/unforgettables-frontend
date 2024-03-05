@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./App.css"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
@@ -23,9 +23,78 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(mockUsers[0])
   const [recipe, setRecipes] = useState(mockRecipes)
 
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user")
+    if (loggedInUser) {
+      setCurrentUser(JSON.parse(loggedInUser))
+    }
+  }, [])
+
+  const logIn = (userInfo) => {
+    fetch("http://localhost:3000/login", {
+      body: JSON.stringify(userInfo),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      method: "POST",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText)
+        }
+        // store the token
+        localStorage.setItem("token", response.headers.get("Authorization"))
+        return response.json()
+      })
+      .then((payload) => {
+        setCurrentUser(payload)
+      })
+      .catch((error) => console.log("login errors: ", error))
+  }
+
+  const signUp = (userInfo) => {
+    fetch("http://localhost:3000/signup", {
+      body: JSON.stringify(userInfo),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      method: "POST",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText)
+        }
+        localStorage.setItem("token", response.headers.get("Authorization"))
+        return response.json()
+      })
+      .then((payload) => {
+        localStorage.setItem("user".JSON.stringify(payload))
+        setCurrentUser(payload)
+      })
+      .catch((error) => console.log("Sign up errors: ", error))
+  }
+
+  const logout = () => {
+    fetch("http://localhost:3000/logout", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"), //retrieve the token
+      },
+      method: "DELETE",
+    })
+      .then((payload) => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("user") // remove the token
+        setCurrentUser(null)
+      })
+      .catch((error) => console.log("log out errors: ", error))
+  }
+
   return (
     <>
-      <Header currentUser={currentUser} />
+      <Header currentUser={currentUser} logout={logout} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
@@ -37,13 +106,13 @@ const App = () => {
         <Route path="/Cookbook" element={<Cookbook />} />
         <Route path="/EditRecipe" element={<EditRecipe />} />
         <Route path="/FamilyTree" element={<FamilyTree />} />
-        <Route path="/LogIn" element={<LogIn />} />
+        <Route path="/LogIn" element={<LogIn logIn={logIn} />} />
         <Route path="/Potluck" element={<Potluck potluck={recipe} />} />
         <Route
           path="/RecipeDetails/:id"
           element={<RecipeDetails recipeDetails={recipe} />}
         />
-        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/SignUp" element={<SignUp signUp={signUp} />} />
         <Route path="*" element={<NotFound />} />
         <Route
           path="/MyRecipes"

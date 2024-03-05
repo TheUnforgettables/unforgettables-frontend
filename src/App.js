@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import "./App.css"
 import Header from "./components/Header"
@@ -20,8 +20,9 @@ import mockRecipes from "./mockRecipes"
 import RecipeProtectedIndex from "./pages/RecipeProtectedIndex"
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState(mockUsers[0])
-  const [recipe, setRecipes] = useState(mockRecipes)
+  const [currentUser, setCurrentUser] = useState(null)
+  const [recipe, setRecipes] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
@@ -29,9 +30,13 @@ const App = () => {
       setCurrentUser(JSON.parse(loggedInUser))
     }
   }, [])
+  
+  useEffect(() => {
+    readRecipe()
+  }, [])
 
   const logIn = (userInfo) => {
-    fetch("http://localhost:3000/login", {
+    fetch("http://localhost:3001/login", {
       body: JSON.stringify(userInfo),
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +48,6 @@ const App = () => {
         if (!response.ok) {
           throw Error(response.statusText)
         }
-        // store the token
         localStorage.setItem("token", response.headers.get("Authorization"))
         return response.json()
       })
@@ -54,7 +58,7 @@ const App = () => {
   }
 
   const signUp = (userInfo) => {
-    fetch("http://localhost:3000/signup", {
+    fetch("http://localhost:3001/signup", {
       body: JSON.stringify(userInfo),
       headers: {
         "Content-Type": "application/json",
@@ -70,26 +74,48 @@ const App = () => {
         return response.json()
       })
       .then((payload) => {
-        localStorage.setItem("user".JSON.stringify(payload))
+        localStorage.setItem("user", JSON.stringify(payload))
         setCurrentUser(payload)
       })
       .catch((error) => console.log("Sign up errors: ", error))
   }
 
   const logout = () => {
-    fetch("http://localhost:3000/logout", {
+    fetch("http://localhost:3001/logout", {
       headers: {
         "Content-Type": "application/json",
-        Authorization: localStorage.getItem("token"), //retrieve the token
+        Authorization: localStorage.getItem("token"),
       },
       method: "DELETE",
     })
       .then((payload) => {
         localStorage.removeItem("token")
-        localStorage.removeItem("user") // remove the token
+        localStorage.removeItem("user") 
         setCurrentUser(null)
-      })
+      }).then(() =>{
+        navigate( "/" )
+      }) 
       .catch((error) => console.log("log out errors: ", error))
+  }
+
+  const createRecipe = () => {
+    console.log(createRecipe)
+  }
+
+  const readRecipe = () => {
+    fetch("http://localhost:3001/potluck")
+    .then((response) => response.text())
+    .then((payload) => setRecipes(payload))
+    .then((error) => console.log(error))
+  }
+
+  console.log(readRecipe)
+  const updateRecipe = () => {
+    console.log(updateRecipe)
+  }
+
+  const deleteRecipe = () => {
+    console.log(deleteRecipe)
   }
 
   return (
@@ -104,7 +130,7 @@ const App = () => {
           element={<AddRecipe currentUser={currentUser} />}
         />
         <Route path="/Cookbook" element={<Cookbook />} />
-        <Route path="/EditRecipe" element={<EditRecipe EditRecipe={updateRecipe} />} />
+        <Route path="/EditRecipe" element={<EditRecipe updateRecipe={updateRecipe} recipes={recipe} />} />
         <Route path="/FamilyTree" element={<FamilyTree />} />
         <Route path="/LogIn" element={<LogIn logIn={logIn} />} />
         <Route path="/Potluck" element={<Potluck potluck={recipe} />} />

@@ -104,7 +104,7 @@ const App = () => {
           element={<AddRecipe currentUser={currentUser} />}
         />
         <Route path="/Cookbook" element={<Cookbook />} />
-        <Route path="/EditRecipe" element={<EditRecipe />} />
+        <Route path="/EditRecipe" element={<EditRecipe EditRecipe={updateRecipe} />} />
         <Route path="/FamilyTree" element={<FamilyTree />} />
         <Route path="/LogIn" element={<LogIn logIn={logIn} />} />
         <Route path="/Potluck" element={<Potluck potluck={recipe} />} />

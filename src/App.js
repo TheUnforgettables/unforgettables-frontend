@@ -23,37 +23,13 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [recipe, setRecipes] = useState([])
   const navigate = useNavigate()
+  console.log(currentUser)
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
     if (loggedInUser) {
       setCurrentUser(JSON.parse(loggedInUser))
     }
-    //stores user token
-    else {
-      const token = localStorage.getItem("token")
-      if (token) {
-        fetch("http://localhost:3000/login", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: token,
-          },
-        })
-          .then((response) => {
-            if (!response.ok) {
-              throw Error(response.statusText)
-            }
-            return response.json()
-          })
-          .then((payload) => {
-            setCurrentUser(payload)
-          })
-          .catch((error) => console.log("Error fetching user: ", error))
-      }
-    }
-  }, [])
-
-  useEffect(() => {
     readRecipe()
   }, [])
 
@@ -74,8 +50,8 @@ const App = () => {
         return response.json()
       })
       .then((payload) => {
-        localStorage.setItem("token", payload.token)
-        setCurrentUser(payload.user)
+        localStorage.setItem("user", JSON.stringify(payload))
+        setCurrentUser(payload)
       })
       .catch((error) => console.log("login errors: ", error))
   }

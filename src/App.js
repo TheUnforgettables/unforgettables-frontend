@@ -29,14 +29,36 @@ const App = () => {
     if (loggedInUser) {
       setCurrentUser(JSON.parse(loggedInUser))
     }
+    //stores user token
+    else {
+      const token = localStorage.getItem("token")
+      if (token) {
+        fetch("http://localhost:3000/login", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw Error(response.statusText)
+            }
+            return response.json()
+          })
+          .then((payload) => {
+            setCurrentUser(payload)
+          })
+          .catch((error) => console.log("Error fetching user: ", error))
+      }
+    }
   }, [])
-  
+
   useEffect(() => {
     readRecipe()
   }, [])
 
   const logIn = (userInfo) => {
-    fetch("http://localhost:3001/login", {
+    fetch("http://localhost:3000/login", {
       body: JSON.stringify(userInfo),
       headers: {
         "Content-Type": "application/json",
@@ -52,13 +74,14 @@ const App = () => {
         return response.json()
       })
       .then((payload) => {
-        setCurrentUser(payload)
+        localStorage.setItem("token", payload.token)
+        setCurrentUser(payload.user)
       })
       .catch((error) => console.log("login errors: ", error))
   }
 
   const signUp = (userInfo) => {
-    fetch("http://localhost:3001/signup", {
+    fetch("http://localhost:3000/signup", {
       body: JSON.stringify(userInfo),
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +104,7 @@ const App = () => {
   }
 
   const logout = () => {
-    fetch("http://localhost:3001/logout", {
+    fetch("http://localhost:3000/logout", {
       headers: {
         "Content-Type": "application/json",
         Authorization: localStorage.getItem("token"),
@@ -90,11 +113,12 @@ const App = () => {
     })
       .then((payload) => {
         localStorage.removeItem("token")
-        localStorage.removeItem("user") 
+        localStorage.removeItem("user")
         setCurrentUser(null)
-      }).then(() =>{
-        navigate( "/" )
-      }) 
+      })
+      .then(() => {
+        navigate("/")
+      })
       .catch((error) => console.log("log out errors: ", error))
   }
 
@@ -103,10 +127,17 @@ const App = () => {
   }
 
   const readRecipe = () => {
-    fetch("http://localhost:3001/potluck")
-    .then((response) => response.text())
-    .then((payload) => setRecipes(payload))
-    .then((error) => console.log(error))
+    const userId = currentUser?.id
+    if (userId) {
+      fetch(`http://localhost:3001/recipes?user_id=${userId}`)
+        .then((response) => response.json())
+        .then((payload) => setRecipes(payload))
+        .then((error) => console.log(error))
+    } else
+      fetch("http://localhost:3001/recipes")
+        .then((response) => response.json())
+        .then((payload) => setRecipes(payload))
+        .then((error) => console.log(error))
   }
 
   console.log(readRecipe)
@@ -130,7 +161,10 @@ const App = () => {
           element={<AddRecipe currentUser={currentUser} />}
         />
         <Route path="/Cookbook" element={<Cookbook />} />
-        <Route path="/EditRecipe" element={<EditRecipe updateRecipe={updateRecipe} recipes={recipe} />} />
+        <Route
+          path="/EditRecipe"
+          element={<EditRecipe updateRecipe={updateRecipe} recipes={recipe} />}
+        />
         <Route path="/FamilyTree" element={<FamilyTree />} />
         <Route path="/LogIn" element={<LogIn logIn={logIn} />} />
         <Route path="/Potluck" element={<Potluck potluck={recipe} />} />

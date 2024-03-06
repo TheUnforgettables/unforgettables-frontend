@@ -9,7 +9,7 @@ const AddRecipe = ({ createRecipe, currentUser }) => {
     description: "",
     ingredients: "",
     public: "",
-    user_id: currentUser.id,
+    user_id: currentUser ? currentUser.id : null,
   })
 
   const handleChange = (e) => {

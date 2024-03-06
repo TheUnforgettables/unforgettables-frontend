@@ -15,7 +15,7 @@ const LogIn = ({ logIn }) => {
     }
     try {
       await logIn(userInfo)
-      navigate("/")
+      navigate("/potluck")
     } catch (error) {
       console.error(error)
     }

@@ -18,7 +18,7 @@ const SignUp = ({ signUp }) => {
       },
     }
     signUp(userInfo)
-    navigate("/")
+    navigate("/login")
     e.target.reset()
   }
 

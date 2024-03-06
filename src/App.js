@@ -98,19 +98,32 @@ const App = () => {
       .catch((error) => console.log("log out errors: ", error))
   }
 
-  const createRecipe = () => {
-    console.log(createRecipe)
+  const createRecipe = (newRecipe) => {
+    const userId = currentUser?.id
+    if (userId) {
+    fetch("http://localhost:3000/recipes", {
+      body: JSON.stringify(newRecipe),
+      method: "Post", 
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then((response)=> response.json())
+      .then (() => readRecipe())
+      .catch((errors) => console.log("Recipe create errors:", errors))
+      navigate("/cookbook")
+    }
   }
 
   const readRecipe = () => {
     const userId = currentUser?.id
     if (userId) {
-      fetch(`http://localhost:3001/recipes?user_id=${userId}`)
+      fetch(`http://localhost:3000/recipes?user_id=${userId}`)
         .then((response) => response.json())
         .then((payload) => setRecipes(payload))
         .then((error) => console.log(error))
     } else
-      fetch("http://localhost:3001/recipes")
+      fetch("http://localhost:3000/recipes")
         .then((response) => response.json())
         .then((payload) => setRecipes(payload))
         .then((error) => console.log(error))
@@ -132,28 +145,23 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
         <Route path="/AddMember" element={<AddMember />} />
-        <Route
-          path="/AddRecipe"
-          element={<AddRecipe currentUser={currentUser} />}
-        />
+        <Route path="/AddRecipe"
+          element={<AddRecipe createRecipe={createRecipe} currentUser={currentUser} />} />
         <Route path="/Cookbook" element={<Cookbook />} />
         <Route
           path="/EditRecipe"
-          element={<EditRecipe updateRecipe={updateRecipe} recipes={recipe} />}
-        />
+          element={<EditRecipe updateRecipe={updateRecipe} recipes={recipe} />} />
         <Route path="/FamilyTree" element={<FamilyTree />} />
         <Route path="/LogIn" element={<LogIn logIn={logIn} />} />
         <Route path="/Potluck" element={<Potluck potluck={recipe} />} />
         <Route
           path="/RecipeDetails/:id"
-          element={<RecipeDetails recipeDetails={recipe} />}
-        />
+          element={<RecipeDetails recipeDetails={recipe} />} />
         <Route path="/SignUp" element={<SignUp signUp={signUp} />} />
         <Route path="*" element={<NotFound />} />
         <Route
           path="/MyRecipes"
-          element={<RecipeProtectedIndex myRecipes={recipe} />}
-        />
+          element={<RecipeProtectedIndex myRecipes={recipe} />} />
       </Routes>
       <Footer />
     </>

@@ -133,8 +133,16 @@ const App = () => {
     navigate(`/recipedetails/${id}`)
   }
 
-  const deleteRecipe = () => {
-    console.log(deleteRecipe)
+  const deleteRecipe = (id) => {
+    fetch(`http://localhost:3000/recipes/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+      .then((response) => response.json())
+      .then(() => readRecipe())
+      .catch((errors) => console.log("delete errors:", errors))
   }
 
   return (
@@ -166,7 +174,7 @@ const App = () => {
         <Route
           path="/MyRecipes"
           element={
-            <RecipeProtectedIndex recipes={recipe} currentUser={currentUser} />
+            <RecipeProtectedIndex recipes={recipe} currentUser={currentUser} deleteRecipe={deleteRecipe} />
           }
         />
       </Routes>

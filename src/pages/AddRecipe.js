@@ -1,30 +1,37 @@
 import React, { useState } from "react"
 import { Button, Form, FormGroup, Label, Input } from "reactstrap"
+import Checkbox from "@mui/material/Checkbox"
+import Done from "@mui/icons-material/Done"
 import { useNavigate } from "react-router-dom"
 
 const AddRecipe = ({ createRecipe, currentUser }) => {
   const navigate = useNavigate()
   const [myRecipe, setMyRecipe] = useState({
+    user_id: currentUser?.id,
     recipe_name: "",
     description: "",
     ingredients: "",
-    public: "",
-    user_id: currentUser.id,
+    instructions: "",
+    public: false,
   })
+  console.log(myRecipe)
+  console.log(currentUser)
 
   const handleChange = (e) => {
-    setMyRecipe({ ...myRecipe, [e.target.name]: e.target.value })
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value
+    setMyRecipe({ ...myRecipe, [e.target.name]: value })
   }
 
   const handleSubmit = () => {
     createRecipe(myRecipe)
-    navigate("/cookbook")
+    navigate("/Myrecipes")
   }
 
   return (
     <>
-      {currentUser?.id && (
-        <div className="cookbook-body">
+      {currentUser && (
+        <div className="myrecipes-body">
           <h1>New Recipe</h1>
           <Form className="form">
             <FormGroup className="form-group recipe name">
@@ -54,14 +61,25 @@ const AddRecipe = ({ createRecipe, currentUser }) => {
                 value={myRecipe.ingredients}
               />
             </FormGroup>
-            <FormGroup className="form-group image">
-              <Label for="image">Image URL: </Label>
+            <FormGroup className="form-group group instructions">
+              <Label for="instructions">Instructions: </Label>
               <Input
                 type="text"
-                name="image"
+                name="instructions"
                 onChange={handleChange}
-                value={myRecipe.image}
+                value={myRecipe.instructions}
               />
+            </FormGroup>
+
+            <FormGroup className="form-group checkbox">
+              <Checkbox
+                checked={myRecipe.public}
+                onChange={handleChange}
+                name="public"
+                icon={<Done />}
+                color="primary"
+              />
+              <Label for="public">Public</Label>
             </FormGroup>
             <div className="submit">
               <Button onClick={handleSubmit} className="new-button">

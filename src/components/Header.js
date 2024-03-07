@@ -34,9 +34,11 @@ const Header = ({ currentUser, logout }) => {
           {currentUser && (
             <>
               <MenuItem>
-                <Link href="/Cookbook">Cookbook</Link>
+                <Link href="/Myrecipes">Cookbook</Link>
               </MenuItem>
-
+              <MenuItem>
+                <Link href="/Addrecipe">Add Recipe</Link>
+              </MenuItem>
               <MenuItem>
                 <Link onClick={handleClick}>Log out</Link>
               </MenuItem>

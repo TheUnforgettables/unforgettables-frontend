@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import "./App.css"
 import Header from "./components/Header"
@@ -6,7 +6,6 @@ import Footer from "./components/Footer"
 import About from "./pages/About"
 import AddMember from "./pages/AddMember"
 import AddRecipe from "./pages/AddRecipe"
-import Cookbook from "./pages/Cookbook"
 import EditRecipe from "./pages/EditRecipe"
 import FamilyTree from "./pages/FamilyTree"
 import Home from "./pages/Home"
@@ -15,19 +14,23 @@ import NotFound from "./pages/NotFound"
 import Potluck from "./pages/Potluck"
 import RecipeDetails from "./pages/RecipeDetails"
 import SignUp from "./pages/SignUp"
-import mockUsers from "./mockUsers"
-import mockRecipes from "./mockRecipes"
+// import mockUsers from "./mockUsers"
+// import mockRecipes from "./mockRecipes"
 import RecipeProtectedIndex from "./pages/RecipeProtectedIndex"
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState(mockUsers[0])
-  const [recipe, setRecipes] = useState(mockRecipes)
+  const [currentUser, setCurrentUser] = useState(null)
+  const [recipe, setRecipes] = useState([])
+  const navigate = useNavigate()
+
+  console.log(recipe)
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
     if (loggedInUser) {
       setCurrentUser(JSON.parse(loggedInUser))
     }
+    readRecipe()
   }, [])
 
   const logIn = (userInfo) => {
@@ -43,11 +46,11 @@ const App = () => {
         if (!response.ok) {
           throw Error(response.statusText)
         }
-        // store the token
         localStorage.setItem("token", response.headers.get("Authorization"))
         return response.json()
       })
       .then((payload) => {
+        localStorage.setItem("user", JSON.stringify(payload))
         setCurrentUser(payload)
       })
       .catch((error) => console.log("login errors: ", error))
@@ -70,7 +73,7 @@ const App = () => {
         return response.json()
       })
       .then((payload) => {
-        localStorage.setItem("user".JSON.stringify(payload))
+        localStorage.setItem("user", JSON.stringify(payload))
         setCurrentUser(payload)
       })
       .catch((error) => console.log("Sign up errors: ", error))
@@ -80,16 +83,58 @@ const App = () => {
     fetch("http://localhost:3000/logout", {
       headers: {
         "Content-Type": "application/json",
-        Authorization: localStorage.getItem("token"), //retrieve the token
+        Authorization: localStorage.getItem("token"),
       },
       method: "DELETE",
     })
       .then((payload) => {
         localStorage.removeItem("token")
-        localStorage.removeItem("user") // remove the token
+        localStorage.removeItem("user")
         setCurrentUser(null)
       })
+      .then(() => {
+        navigate("/")
+      })
       .catch((error) => console.log("log out errors: ", error))
+  }
+
+  const readRecipe = () => {
+    fetch("http://localhost:3000/recipes")
+      .then((response) => response.json())
+      .then((payload) => setRecipes(payload))
+      .catch((error) => console.log(error))
+  }
+
+  const createRecipe = (recipe) => {
+    fetch("http://localhost:3000/recipes", {
+      body: JSON.stringify(recipe),
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    })
+      .then((response) => response.json())
+      .then(() => readRecipe())
+      .catch((errors) => console.log("Recipe create errors:", errors))
+  }
+
+  const updateRecipe = (recipe, id) => {
+    fetch(`http://localhost:3000/recipes/${id}`, {
+      body: JSON.stringify(recipe),
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then(() => readRecipe())
+      .catch((errors) => console.log("Recipe edit errors:", errors))
+    navigate(`/recipedetails/${id}`)
+  }
+
+  const deleteRecipe = () => {
+    console.log(deleteRecipe)
   }
 
   return (
@@ -101,10 +146,14 @@ const App = () => {
         <Route path="/AddMember" element={<AddMember />} />
         <Route
           path="/AddRecipe"
-          element={<AddRecipe currentUser={currentUser} />}
+          element={
+            <AddRecipe createRecipe={createRecipe} currentUser={currentUser} />
+          }
         />
-        <Route path="/Cookbook" element={<Cookbook />} />
-        <Route path="/EditRecipe" element={<EditRecipe EditRecipe={updateRecipe} />} />
+        <Route
+          path="/EditRecipe/:id"
+          element={<EditRecipe updateRecipe={updateRecipe} recipes={recipe} />}
+        />
         <Route path="/FamilyTree" element={<FamilyTree />} />
         <Route path="/LogIn" element={<LogIn logIn={logIn} />} />
         <Route path="/Potluck" element={<Potluck potluck={recipe} />} />
@@ -116,7 +165,9 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
         <Route
           path="/MyRecipes"
-          element={<RecipeProtectedIndex myRecipes={recipe} />}
+          element={
+            <RecipeProtectedIndex recipes={recipe} currentUser={currentUser} />
+          }
         />
       </Routes>
       <Footer />

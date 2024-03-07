@@ -6,7 +6,6 @@ import Footer from "./components/Footer"
 import About from "./pages/About"
 import AddMember from "./pages/AddMember"
 import AddRecipe from "./pages/AddRecipe"
-import Cookbook from "./pages/Cookbook"
 import EditRecipe from "./pages/EditRecipe"
 import FamilyTree from "./pages/FamilyTree"
 import Home from "./pages/Home"
@@ -15,15 +14,16 @@ import NotFound from "./pages/NotFound"
 import Potluck from "./pages/Potluck"
 import RecipeDetails from "./pages/RecipeDetails"
 import SignUp from "./pages/SignUp"
-import mockUsers from "./mockUsers"
-import mockRecipes from "./mockRecipes"
+// import mockUsers from "./mockUsers"
+// import mockRecipes from "./mockRecipes"
 import RecipeProtectedIndex from "./pages/RecipeProtectedIndex"
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [recipe, setRecipes] = useState([])
   const navigate = useNavigate()
-  console.log(currentUser)
+
+console.log(currentUser)
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
@@ -99,8 +99,6 @@ const App = () => {
   }
 
   const createRecipe = (newRecipe) => {
-    const userId = currentUser?.id
-    if (userId) {
     fetch("http://localhost:3000/recipes", {
       body: JSON.stringify(newRecipe),
       method: "Post", 
@@ -109,29 +107,34 @@ const App = () => {
       }
     })
       .then((response)=> response.json())
-      .then (() => readRecipe())
+      .then (() => {
+        readRecipe()
+        navigate("/Myrecipes")
+      })
       .catch((errors) => console.log("Recipe create errors:", errors))
-      navigate("/cookbook")
-    }
   }
+  
 
   const readRecipe = () => {
-    const userId = currentUser?.id
-    if (userId) {
-      fetch(`http://localhost:3000/recipes?user_id=${userId}`)
-        .then((response) => response.json())
-        .then((payload) => setRecipes(payload))
-        .then((error) => console.log(error))
-    } else
       fetch("http://localhost:3000/recipes")
         .then((response) => response.json())
         .then((payload) => setRecipes(payload))
-        .then((error) => console.log(error))
+        .catch((error) => console.log(error))
   }
 
-  console.log(readRecipe)
+
   const updateRecipe = () => {
-    console.log(updateRecipe)
+    fetch("http://localhost:3000/recipes/${id}", {
+      body: JSON.stringify(recipe),
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then((response) => response.json())
+      .then(() => readRecipe())
+      .catch((errors) => console.log("Recipe edit errors:", errors))
+    navigate("/recipedetails/${id}")
   }
 
   const deleteRecipe = () => {
@@ -145,23 +148,15 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
         <Route path="/AddMember" element={<AddMember />} />
-        <Route path="/AddRecipe"
-          element={<AddRecipe createRecipe={createRecipe} currentUser={currentUser} />} />
-        <Route path="/Cookbook" element={<Cookbook />} />
-        <Route
-          path="/EditRecipe"
-          element={<EditRecipe updateRecipe={updateRecipe} recipes={recipe} />} />
+        <Route path="/AddRecipe" element={<AddRecipe createRecipe={createRecipe} currentUser={currentUser} />} />
+        <Route path="/EditRecipe" element={<EditRecipe updateRecipe={updateRecipe} recipes={recipe} />} />
         <Route path="/FamilyTree" element={<FamilyTree />} />
         <Route path="/LogIn" element={<LogIn logIn={logIn} />} />
         <Route path="/Potluck" element={<Potluck potluck={recipe} />} />
-        <Route
-          path="/RecipeDetails/:id"
-          element={<RecipeDetails recipeDetails={recipe} />} />
+        <Route path="/RecipeDetails/:id" element={<RecipeDetails recipeDetails={recipe} />} />
         <Route path="/SignUp" element={<SignUp signUp={signUp} />} />
         <Route path="*" element={<NotFound />} />
-        <Route
-          path="/MyRecipes"
-          element={<RecipeProtectedIndex myRecipes={recipe} />} />
+        <Route path="/MyRecipes" element={<RecipeProtectedIndex recipes={recipe} currentUser={currentUser} />} />
       </Routes>
       <Footer />
     </>

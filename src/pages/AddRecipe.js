@@ -7,27 +7,30 @@ import { useNavigate } from "react-router-dom"
 const AddRecipe = ({ createRecipe, currentUser }) => {
   const navigate = useNavigate()
   const [myRecipe, setMyRecipe] = useState({
+    user_id: currentUser?.id,
     recipe_name: "",
     description: "",
     ingredients: "",
     instructions: "",
     public: false,
-    user_id: currentUser ? currentUser.id : null,
   })
+  console.log(myRecipe)
+  console.log(currentUser)
 
   const handleChange = (e) => {
-    setMyRecipe({ ...myRecipe, [e.target.name]: e.target.value })
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
+    setMyRecipe({ ...myRecipe, [e.target.name]: value })
   }
 
   const handleSubmit = () => {
     createRecipe(myRecipe)
-    navigate("/cookbook")
+    navigate("/Myrecipes")
   }
 
   return (
     <>
-      {currentUser?.id && (
-        <div className="cookbook-body">
+      {currentUser && (
+        <div className="myrecipes-body">
           <h1>New Recipe</h1>
           <Form className="form">
             <FormGroup className="form-group recipe name">

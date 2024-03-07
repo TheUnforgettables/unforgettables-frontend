@@ -1,12 +1,10 @@
 import React from 'react'
-import { Card, CardImg, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
-  import { NavLink } from "react-router-dom"
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { NavLink } from "react-router-dom"
 
 const RecipeProtectedIndex = ({recipes, currentUser}) => {
   const myRecipes = recipes?.filter(recipe => recipe.user_id === currentUser.id )
 
-  console.log(myRecipes)
   return (
     <div className='Recipes-body'>
       <h3>My Recipes:</h3>
@@ -14,14 +12,21 @@ const RecipeProtectedIndex = ({recipes, currentUser}) => {
         {myRecipes?.map((recipe,index) => {
           return(
             <Card key={index} className='recipe-cards'>
-              <CardImg top width="100%" src={recipe.image} alt="" className="recipe-picture"/>
+              <CardImg 
+                top width="100%" 
+                src={recipe.image} 
+                alt="" 
+                className="recipe-picture"/>
               <CardBody>
                 <div className="recipe-text">
-                  <CardTitle><b>${recipe.recipe_name}/</b></CardTitle>
+                  <CardTitle><b>{recipe.recipe_name}</b></CardTitle>
                   <CardSubtitle>{recipe.ingredients} Ingredients {recipe.instructions}, Instructions</CardSubtitle>
                 </div>
-                <NavLink to={`/Recipeshow/${recipe.id}`} className="nav-link">
+                <NavLink to={`/RecipeDetails/${recipe.id}`} className="nav-link">
                   <Button className='recipe-button'>More Details</Button>
+                </NavLink>
+                <NavLink to={`/EditRecipe/${recipe?.id}`} className="nav-link">
+                <Button className='recipe-button'>edit</Button>
                 </NavLink>
               </CardBody>
             </Card>

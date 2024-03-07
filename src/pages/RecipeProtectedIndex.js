@@ -9,7 +9,7 @@ import {
 } from "reactstrap"
 import { NavLink } from "react-router-dom"
 
-const RecipeProtectedIndex = ({ recipes, currentUser }) => {
+const RecipeProtectedIndex = ({ recipes, deleteRecipe, currentUser }) => {
   const myRecipes = recipes?.filter(
     (recipe) => recipe.user_id === currentUser.id
   )
@@ -46,6 +46,9 @@ const RecipeProtectedIndex = ({ recipes, currentUser }) => {
                 </NavLink>
                 <NavLink to={`/editrecipe/${recipe.id}`} className="nav-link">
                   <Button className="recipe-button">edit</Button>
+                </NavLink>
+                <NavLink to="/myrecipes">
+                  <Button onClick = {()=> deleteRecipe(recipe.id)}>Delete Recipe</Button>
                 </NavLink>
               </CardBody>
             </Card>

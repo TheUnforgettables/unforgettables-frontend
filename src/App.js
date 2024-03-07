@@ -23,7 +23,7 @@ const App = () => {
   const [recipe, setRecipes] = useState([])
   const navigate = useNavigate()
 
-console.log(currentUser)
+  console.log(recipe)
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
@@ -98,43 +98,39 @@ console.log(currentUser)
       .catch((error) => console.log("log out errors: ", error))
   }
 
-  const createRecipe = (newRecipe) => {
+  const readRecipe = () => {
+    fetch("http://localhost:3000/recipes")
+      .then((response) => response.json())
+      .then((payload) => setRecipes(payload))
+      .catch((error) => console.log(error))
+  }
+
+  const createRecipe = (recipe) => {
     fetch("http://localhost:3000/recipes", {
-      body: JSON.stringify(newRecipe),
-      method: "Post", 
+      body: JSON.stringify(recipe),
+
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
+      method: "POST",
     })
-      .then((response)=> response.json())
-      .then (() => {
-        readRecipe()
-        navigate("/Myrecipes")
-      })
+      .then((response) => response.json())
+      .then(() => readRecipe())
       .catch((errors) => console.log("Recipe create errors:", errors))
   }
-  
 
-  const readRecipe = () => {
-      fetch("http://localhost:3000/recipes")
-        .then((response) => response.json())
-        .then((payload) => setRecipes(payload))
-        .catch((error) => console.log(error))
-  }
-
-
-  const updateRecipe = () => {
-    fetch("http://localhost:3000/recipes/${id}", {
+  const updateRecipe = (recipe, id) => {
+    fetch(`http://localhost:3000/recipes/${id}`, {
       body: JSON.stringify(recipe),
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     })
       .then((response) => response.json())
       .then(() => readRecipe())
       .catch((errors) => console.log("Recipe edit errors:", errors))
-    navigate("/recipedetails/${id}")
+    navigate(`/recipedetails/${id}`)
   }
 
   const deleteRecipe = () => {
@@ -148,15 +144,31 @@ console.log(currentUser)
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
         <Route path="/AddMember" element={<AddMember />} />
-        <Route path="/AddRecipe" element={<AddRecipe createRecipe={createRecipe} currentUser={currentUser} />} />
-        <Route path="/EditRecipe" element={<EditRecipe updateRecipe={updateRecipe} recipes={recipe} />} />
+        <Route
+          path="/AddRecipe"
+          element={
+            <AddRecipe createRecipe={createRecipe} currentUser={currentUser} />
+          }
+        />
+        <Route
+          path="/EditRecipe/:id"
+          element={<EditRecipe updateRecipe={updateRecipe} recipes={recipe} />}
+        />
         <Route path="/FamilyTree" element={<FamilyTree />} />
         <Route path="/LogIn" element={<LogIn logIn={logIn} />} />
         <Route path="/Potluck" element={<Potluck potluck={recipe} />} />
-        <Route path="/RecipeDetails/:id" element={<RecipeDetails recipeDetails={recipe} />} />
+        <Route
+          path="/RecipeDetails/:id"
+          element={<RecipeDetails recipeDetails={recipe} />}
+        />
         <Route path="/SignUp" element={<SignUp signUp={signUp} />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/MyRecipes" element={<RecipeProtectedIndex recipes={recipe} currentUser={currentUser} />} />
+        <Route
+          path="/MyRecipes"
+          element={
+            <RecipeProtectedIndex recipes={recipe} currentUser={currentUser} />
+          }
+        />
       </Routes>
       <Footer />
     </>

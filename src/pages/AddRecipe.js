@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Button, Form, FormGroup, Label, Input } from "reactstrap"
-import Checkbox from '@mui/material/Checkbox'
-import Done from '@mui/icons-material/Done'
+import Checkbox from "@mui/material/Checkbox"
+import Done from "@mui/icons-material/Done"
 import { useNavigate } from "react-router-dom"
 
 const AddRecipe = ({ createRecipe, currentUser }) => {
@@ -18,7 +18,8 @@ const AddRecipe = ({ createRecipe, currentUser }) => {
   console.log(currentUser)
 
   const handleChange = (e) => {
-    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value
     setMyRecipe({ ...myRecipe, [e.target.name]: value })
   }
 
@@ -69,22 +70,14 @@ const AddRecipe = ({ createRecipe, currentUser }) => {
                 value={myRecipe.instructions}
               />
             </FormGroup>
-            <FormGroup className="form-group image">
-              <Label for="image">Image: </Label>
-              <Input
-                type="text"
-                name="image"
-                onChange={handleChange}
-                value={myRecipe.image}
-              />
-            </FormGroup>
+
             <FormGroup className="form-group checkbox">
               <Checkbox
                 checked={myRecipe.public}
                 onChange={handleChange}
                 name="public"
-                icon={<Done />} 
-                color="primary" 
+                icon={<Done />}
+                color="primary"
               />
               <Label for="public">Public</Label>
             </FormGroup>

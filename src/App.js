@@ -105,17 +105,19 @@ const App = () => {
       .catch((error) => console.log(error))
   }
 
-  const createRecipe = (recipe) => {
-    fetch("http://localhost:3000/recipes", {
-      body: JSON.stringify(recipe),
-
+  const createRecipe = (newRecipe) => {
+    fetch("http://localhost:3000/recipes/", {
+      body: JSON.stringify(newRecipe),
+      method: "Post",
       headers: {
         "Content-Type": "application/json",
       },
-      method: "POST",
     })
       .then((response) => response.json())
-      .then(() => readRecipe())
+      .then(() => {
+        readRecipe()
+        navigate("/Myrecipes")
+      })
       .catch((errors) => console.log("Recipe create errors:", errors))
   }
 
@@ -136,9 +138,9 @@ const App = () => {
   const deleteRecipe = (id) => {
     fetch(`http://localhost:3000/recipes/${id}`, {
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      method: "DELETE"
+      method: "DELETE",
     })
       .then((response) => response.json())
       .then(() => readRecipe())
@@ -174,7 +176,11 @@ const App = () => {
         <Route
           path="/MyRecipes"
           element={
-            <RecipeProtectedIndex recipes={recipe} currentUser={currentUser} deleteRecipe={deleteRecipe} />
+            <RecipeProtectedIndex
+              recipes={recipe}
+              currentUser={currentUser}
+              deleteRecipe={deleteRecipe}
+            />
           }
         />
       </Routes>

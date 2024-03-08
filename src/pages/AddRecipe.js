@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 const AddRecipe = ({ createRecipe, currentUser }) => {
   const navigate = useNavigate()
   const [myRecipe, setMyRecipe] = useState({
-    user_id: currentUser?.id,
+    user_id: currentUser?.id || "",
     recipe_name: "",
     description: "",
     ingredients: "",

@@ -1,7 +1,7 @@
 * {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   color: black;
-  }
+}
 .logo {
   height: 50px;
 }
@@ -11,6 +11,10 @@ header {
   align-content: center;
   text-align: center;
   margin: auto;
+}
+
+h1 {
+  text-align: center;
 }
 video {
   position: fixed;
@@ -43,10 +47,103 @@ video {
   min-height: 100%;
   z-index: -1;
 }
-/* Cookbook Styling */
-.cookbook-body {
-
+/* Footer Styling */
+.footer {
+  background-color: transparent;
+  color: #fff;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
 }
-.form {
 
+.footer h4 {
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.footer .col-md-4 {
+  text-align: center;
+  list-style: none;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  display: inline;
+  font-weight: bold;
+}
+
+.footer a:hover {
+  color: #f92d2d;
+}
+
+.row {
+  width: 100%;
+}
+/* Card styling*/
+
+.potluck-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 20%;
+  margin: 20px;
+}
+
+.potluck-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.potluck-card-img-top {
+  width: 100%;
+  height: auto;
+}
+
+.potluck-card-body {
+  padding: 15px;
+}
+
+.recipe-button,
+.potluck-button {
+  background-color: #e6a756;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.recipe-button:hover,
+.potluck-button:hover {
+  background-color: darken(#e6a756, 10%);
+}
+
+.flex-recipes,
+.flex-potluck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.flex-recipe-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Enhance the visual styling of the recipe details */
+.recipe-details-body {
+  padding: 10rem;
+}
+
+.recipe-details-text {
+  text-align: center;
 }

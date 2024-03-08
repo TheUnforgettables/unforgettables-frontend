@@ -8,11 +8,12 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
 
   const [recipeFormData, setRecipeFormData] = useState({
     user_id: currentUser?.id,
-    recipe_name: recipe?.recipe_name,
-    description: recipe?.description,
-    ingredients: recipe?.ingredients,
-    instructions: recipe?.instructions,
-    public: recipe?.public,
+    recipe_name: recipe?.recipe_name || "",
+    description: recipe?.description || "",
+    ingredients: recipe?.ingredients || "",
+    instructions: recipe?.instructions || "",
+    image: recipe?.image || "",
+    public: recipe?.public || "",
   })
 
   const handleSubmit = (e) => {
@@ -83,6 +84,22 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
               setRecipeFormData({
                 ...recipeFormData,
                 instructions: e.target.value,
+              })
+            }
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Label for="recipeInstructions">Image:</Label>
+          <Input
+            type="textarea"
+            id="recipeInstructions"
+            name="recipeInstructions"
+            value={recipeFormData.image}
+            onChange={(e) =>
+              setRecipeFormData({
+                ...recipeFormData,
+                image: e.target.value,
               })
             }
           />

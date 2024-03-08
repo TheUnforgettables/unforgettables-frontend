@@ -23,6 +23,7 @@ const App = () => {
   const [recipe, setRecipes] = useState([])
   const navigate = useNavigate()
 
+  console.log(currentUser)
   console.log(recipe)
 
   useEffect(() => {
@@ -154,12 +155,19 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
         <Route path="/AddMember" element={<AddMember />} />
-        <Route
-          path="/AddRecipe"
-          element={
-            <AddRecipe createRecipe={createRecipe} currentUser={currentUser} />
-          }
-        />
+
+        {currentUser && (
+          <Route
+            path="/AddRecipe"
+            element={
+              <AddRecipe
+                createRecipe={createRecipe}
+                currentUser={currentUser}
+              />
+            }
+          />
+        )}
+
         <Route
           path="/EditRecipe/:id"
           element={<EditRecipe updateRecipe={updateRecipe} recipes={recipe} />}

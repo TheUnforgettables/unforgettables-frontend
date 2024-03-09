@@ -1,6 +1,6 @@
-import React from "react"
-import { useRef } from "react"
+import React, { useRef } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
+import { Button, Form, FormGroup, Label, Input } from "reactstrap"
 
 const SignUp = ({ signUp }) => {
   const formRef = useRef()
@@ -23,28 +23,54 @@ const SignUp = ({ signUp }) => {
   }
 
   return (
-    <div>
-      <form ref={formRef} onSubmit={handleSubmit}>
-        Email: <input type="email" name="email" placeholder="email" />
-        <br />
-        Password:{" "}
-        <input type="password" name="password" placeholder="password" />
-        <br />
-        Confirm Password:{" "}
-        <input
-          type="password"
-          name="password_confirmation"
-          placeholder="confirm password"
-        />
-        <br />
-        <input type="submit" value="submit" />
-      </form>
-      <br />
-      <div>
-        Already registered? <NavLink to="/LogIn">Log In</NavLink> here.
+    <div className="recipe-card">
+      <h1 className="recipe-card-title">Sign Up</h1>
+      <Form className="form" innerRef={formRef} onSubmit={handleSubmit}>
+        <FormGroup className="form-group">
+          <Label for="email">Email:</Label>
+          <Input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+        </FormGroup>
+        <FormGroup className="form-group">
+          <Label for="password">Password:</Label>
+          <Input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+          />
+        </FormGroup>
+        <FormGroup className="form-group">
+          <Label for="password_confirmation">Confirm Password:</Label>
+          <Input
+            type="password"
+            name="password_confirmation"
+            id="password_confirmation"
+            placeholder="Confirm your password"
+            required
+          />
+        </FormGroup>
+        <div className="submit">
+          <Button type="submit" className="new-button">
+            Submit
+          </Button>
+        </div>
+      </Form>
+      <div className="links">
+        Already registered?{" "}
+        <NavLink to="/login">
+          <u>Log In</u>
+        </NavLink>{" "}
+        here.
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignUp
+export default SignUp;

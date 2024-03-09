@@ -38,7 +38,7 @@ const Potluck = ({ potluck }) => {
               </CardOverflow>
               <CardBody>
                 <div className="potluck-text">
-                  <Typography level="h4">{potluck.recipe_name}</Typography>
+                  <Typography level="h3">{potluck.recipe_name}</Typography>
                   <Typography level="body-md">{potluck.description}</Typography>
                 </div>
                 <NavLink

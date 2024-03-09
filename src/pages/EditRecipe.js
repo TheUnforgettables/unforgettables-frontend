@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Button, Form, FormGroup, Label, Input } from "reactstrap"
+import { Form, FormGroup, Label, Input, Button } from "reactstrap"
 import { useParams } from "react-router-dom"
 
 const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
@@ -22,10 +22,10 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
   }
 
   return (
-    <div>
-      <h1>Edit Recipe</h1>
-      <Form>
-        <FormGroup>
+    <div className="recipe-card">
+      <h1 className="recipe-card-title">Edit Recipe</h1>
+      <Form className="form" onSubmit={handleSubmit}>
+        <FormGroup className="form-group">
           <Label for="recipeName">Recipe Name:</Label>
           <Input
             type="text"
@@ -41,7 +41,7 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
           />
         </FormGroup>
 
-        <FormGroup>
+        <FormGroup className="form-group">
           <Label for="recipeDescription">Description:</Label>
           <Input
             type="text"
@@ -57,7 +57,7 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
           />
         </FormGroup>
 
-        <FormGroup>
+        <FormGroup className="form-group">
           <Label for="recipeIngredients">Ingredients:</Label>
           <Input
             type="text"
@@ -73,7 +73,7 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
           />
         </FormGroup>
 
-        <FormGroup>
+        <FormGroup className="form-group">
           <Label for="recipeInstructions">Instructions:</Label>
           <Input
             type="textarea"
@@ -89,12 +89,12 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
           />
         </FormGroup>
 
-        <FormGroup>
-          <Label for="recipeInstructions">Image:</Label>
+        <FormGroup className="form-group">
+          <Label for="recipeImage">Image:</Label>
           <Input
-            type="textarea"
-            id="recipeInstructions"
-            name="recipeInstructions"
+            type="text"
+            id="recipeImage"
+            name="recipeImage"
             value={recipeFormData.image}
             onChange={(e) =>
               setRecipeFormData({
@@ -105,7 +105,11 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
           />
         </FormGroup>
 
-        <Button onClick={handleSubmit}>Update</Button>
+        <div className="submit">
+          <Button type="submit" className="new-button">
+            Update
+          </Button>
+        </div>
       </Form>
     </div>
   )

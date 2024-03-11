@@ -41,7 +41,6 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
               }
             />
           </FormGroup>
-
           <FormGroup className="form-group">
             <Label for="recipeDescription">Description:</Label>
             <Input
@@ -57,7 +56,6 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
               }
             />
           </FormGroup>
-
           <FormGroup className="form-group">
             <Label for="recipeIngredients">Ingredients:</Label>
             <Input
@@ -73,7 +71,6 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
               }
             />
           </FormGroup>
-
           <FormGroup className="form-group">
             <Label for="recipeInstructions">Instructions:</Label>
             <Input
@@ -89,7 +86,6 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
               }
             />
           </FormGroup>
-
           <FormGroup className="form-group">
             <Label for="recipeImage">Image:</Label>
             <Input
@@ -105,7 +101,6 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
               }
             />
           </FormGroup>
-
           <div className="submit">
             <Button type="submit" className="new-button">
               Update

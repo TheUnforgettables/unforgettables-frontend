@@ -13,6 +13,7 @@ const AddRecipe = ({ createRecipe, currentUser }) => {
     description: "",
     ingredients: "",
     instructions: "",
+    image: null,
     public: false,
   })
 
@@ -20,6 +21,10 @@ const AddRecipe = ({ createRecipe, currentUser }) => {
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value
     setMyRecipe({ ...myRecipe, [e.target.name]: value })
+  }
+
+  const handleImageChange = (e) => {
+    setMyRecipe({ ...myRecipe, image: e.target.files[0] })
   }
 
   const handleSubmit = () => {
@@ -70,7 +75,15 @@ const AddRecipe = ({ createRecipe, currentUser }) => {
                     value={myRecipe.instructions}
                   />
                 </FormGroup>
-
+                <FormGroup className="form-group">
+                  <Label for="image">Image:</Label>
+                  <Input
+                    type="file"
+                    name="image"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                  />
+                </FormGroup>
                 <FormGroup className="form-group checkbox">
                   <Checkbox
                     checked={myRecipe.public}

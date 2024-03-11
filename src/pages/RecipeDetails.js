@@ -31,6 +31,7 @@ const RecipeDetails = ({ recipeDetails = [] }) => {
                   top="true"
                   width="100%"
                   src={currentRecipe.image}
+                  srcSet={currentRecipe.image}
                   alt=""
                   className="recipe-picture"
                 />
@@ -41,15 +42,21 @@ const RecipeDetails = ({ recipeDetails = [] }) => {
                 <Typography level="h3">{currentRecipe.recipe_name}</Typography>
                 <div className="label">
                   <Typography level="title-md">Description:</Typography>
-                  <Typography level="body-md">{currentRecipe.description}</Typography>
+                  <Typography level="body-md">
+                    {currentRecipe.description}
+                  </Typography>
                 </div>
                 <div className="label">
                   <Typography level="title-md">Ingredients:</Typography>
-                  <Typography level="body-md">{currentRecipe.ingredients}</Typography>
+                  <Typography level="body-md">
+                    {currentRecipe.ingredients}
+                  </Typography>
                 </div>
                 <div className="label">
                   <Typography level="title-md">Instructions:</Typography>
-                  <Typography level="body-md">{currentRecipe.instructions}</Typography>
+                  <Typography level="body-md">
+                    {currentRecipe.instructions}
+                  </Typography>
                 </div>
               </div>
               <NavLink to={`/potluck`} className="nav-link">
@@ -59,7 +66,7 @@ const RecipeDetails = ({ recipeDetails = [] }) => {
               </NavLink>
             </CardContent>
           </Card>
-      )}
+        )}
       </div>
     </div>
   )

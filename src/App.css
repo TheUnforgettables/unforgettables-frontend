@@ -11,6 +11,10 @@ h1 {
   text-align: center;
 }
 
+.heading {
+  text-align: center;
+}
+
 video {
   position: fixed;
   top: 0;
@@ -271,14 +275,19 @@ video {
 
 .not-found-image {
   max-width: 100%;
-  max-height: 100%; 
+  max-height: 100%;
 }
 
 .background-image {
-  background-image: url("/Users/greathouse/GitHub/unforgettables-frontend/src/assets/recipe1.png");
+  background-image: url("/src/assets/recipe1.png");
   background-size: cover;
   min-width: 100vw;
   min-height: 100vh;
   padding: 40px;
   z-index: -1;
+}
+
+.card-holder {
+  margin-top: 0;
+  margin-bottom: 100px;
 }

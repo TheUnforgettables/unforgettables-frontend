@@ -1,3 +1,49 @@
+* {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: black;
+}
+
+.header {
+  text-align: right;
+}
+
+h1 {
+  text-align: center;
+}
+
+video {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: -1;
+}
+
+.overlay {
+  padding: 13vw 6vw;
+  background-color: transparent;
+  z-index: 1;
+  width: 100%;
+}
+
+.title {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: black;
+  font-size: 50px;
+  font-weight: 5;
+  letter-spacing: 4px;
+  width: 100%;
+}
+
+.app-details {
+  text-align: center;
+  font-weight: 5;
+  letter-spacing: 4px;
+  width: 100%;
+}
+
 /* Footer Styling */
 .footer {
   background-color: transparent;
@@ -12,6 +58,7 @@
 }
 
 .footer h4 {
+  color: white;
   width: 100%;
   font-size: 18px;
   font-weight: bold;
@@ -42,44 +89,9 @@
 
 /* Card styling*/
 
-.recipe-cards,
-.potluck-card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  width: 20%;
-  margin: 20px;
-}
-
-.recipe-cards:hover,
-.potluck-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.recipe-picture,
-.potluck-picture {
-  width: 100%;
-  height: auto;
-}
-
 .recipe-text,
 .potluck-text {
-  padding: 15px;
-}
-
-.recipe-button,
-.potluck-button {
-  background-color: #e6a756;
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 10px 20px;
-  align-items: center;
-  margin-top: 0.5rem;
-}
-
-.recipe-button:hover,
-.potluck-button:hover {
-  background-color: darken(#e6a756, 10%);
+  padding: 10px;
 }
 
 .flex-recipes,
@@ -92,58 +104,9 @@
 .flex-recipe-details {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: space-around;
 }
 
-
-.recipe-details-body {
-  padding: 10rem;
-}
-
-.recipe-details-text {
-  text-align: left;
-}
-
-* {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  color: black;
-}
-.logo {
-  height: 50px;
-}
-header {
-  display: inline-flex;
-  align-items: center;
-  align-content: center;
-  text-align: center;
-  margin: auto;
-}
-
-h1 {
-  text-align: center;
-}
-video {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  min-width: 100vw;
-  min-height: 100vh;
-  z-index: -1;
-}
-.overlay {
-  padding: 13vw 6vw;
-  background-color: transparent;
-  z-index: 1;
-  width: 100%;
-}
-.title {
-  font-size: 50px;
-  font-weight: 600;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  letter-spacing: 4px;
-  width: 100%;
-}
 .not-found-background {
   position: center;
   top: 0;
@@ -153,10 +116,11 @@ video {
   min-height: 100%;
   z-index: -1;
 }
-.label {
+
+/* .label {
   display: flex;
   margin-bottom: 8px;
-}
+} */
 
 .label > *:first-child {
   font-weight: bold;
@@ -165,21 +129,21 @@ video {
 .potluck-picture {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image covers the entire AspectRatio container */
+  object-fit: cover;
 }
+
 .button-container {
   display: flex;
-  justify-content: center;
-  gap: 10px; /* Adjust the gap between buttons as needed */
+  justify-content: space-around;
+  align-items: center;
 }
 
 .button-wrapper {
-  padding: 10px; /* Adjust the padding around the buttons as needed */
+  padding: 10px 0;
 }
 .recipe-card {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   max-width: 400px;
   margin: 0 auto;
@@ -212,19 +176,11 @@ video {
   cursor: pointer;
 }
 
-.new-button:hover {
-  background-color: #0056b3;
-}
 /* Common styles */
 .auth-body {
   margin: auto;
   width: 50%;
   padding: 20px;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 20px;
 }
 
 .form-div {
@@ -246,7 +202,6 @@ video {
 .actions {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -260,10 +215,6 @@ video {
 .links a {
   color: #007bff;
   text-decoration: none;
-}
-
-.links a:hover {
-  text-decoration: underline;
 }
 
 /* AddRecipe specific styles */
@@ -297,15 +248,6 @@ video {
   text-align: center;
 }
 
-.new-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
 /* Common styles */
 .auth-body {
   margin: auto;
@@ -313,49 +255,14 @@ video {
   padding: 20px;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
 .form-div {
   width: 100%;
-}
-
-.field {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
 }
 
 .auth-flex {
   display: block;
 }
 
-.actions {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.links {
-  margin-top: 10px;
-}
-
-.links a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.links a:hover {
-  text-decoration: underline;
-}
 .not-found-container {
   display: flex;
   justify-content: center;
@@ -366,4 +273,13 @@ video {
 .not-found-image {
   max-width: 100%;
   max-height: 100%; 
+}
+
+.background-image {
+  background-image: url("/Users/greathouse/GitHub/unforgettables-frontend/src/assets/recipe1.png");
+  background-size: cover;
+  min-width: 100vw;
+  min-height: 100vh;
+  padding: 40px;
+  z-index: -1;
 }

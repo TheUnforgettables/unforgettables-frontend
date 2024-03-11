@@ -30,62 +30,64 @@ const AddRecipe = ({ createRecipe, currentUser }) => {
   return (
     <>
       {currentUser && (
-        <div className="recipe-card">
-          <h1 className="recipe-card-title">New Recipe</h1>
-          <Form className="form">
-            <FormGroup className="form-group">
-              <Label for="recipe_name">Recipe Name:</Label>
-              <Input
-                type="text"
-                name="recipe_name"
-                onChange={handleChange}
-                value={myRecipe.recipe_name}
-              />
-            </FormGroup>
-            <FormGroup className="form-group">
-              <Label for="description">Description:</Label>
-              <Input
-                type="text"
-                name="description"
-                onChange={handleChange}
-                value={myRecipe.description}
-              />
-            </FormGroup>
-            <FormGroup className="form-group">
-              <Label for="ingredients">Ingredients:</Label>
-              <Input
-                type="text"
-                name="ingredients"
-                onChange={handleChange}
-                value={myRecipe.ingredients}
-              />
-            </FormGroup>
-            <FormGroup className="form-group">
-              <Label for="instructions">Instructions:</Label>
-              <Input
-                type="text"
-                name="instructions"
-                onChange={handleChange}
-                value={myRecipe.instructions}
-              />
-            </FormGroup>
+        <div className="background-image">
+          <div className="recipe-card">
+              <h1 className="recipe-card-title">New Recipe</h1>
+              <Form className="form">
+                <FormGroup className="form-group">
+                  <Label for="recipe_name">Recipe Name:</Label>
+                  <Input
+                    type="text"
+                    name="recipe_name"
+                    onChange={handleChange}
+                    value={myRecipe.recipe_name}
+                  />
+                </FormGroup>
+                <FormGroup className="form-group">
+                  <Label for="description">Description:</Label>
+                  <Input
+                    type="text"
+                    name="description"
+                    onChange={handleChange}
+                    value={myRecipe.description}
+                  />
+                </FormGroup>
+                <FormGroup className="form-group">
+                  <Label for="ingredients">Ingredients:</Label>
+                  <Input
+                    type="text"
+                    name="ingredients"
+                    onChange={handleChange}
+                    value={myRecipe.ingredients}
+                  />
+                </FormGroup>
+                <FormGroup className="form-group">
+                  <Label for="instructions">Instructions:</Label>
+                  <Input
+                    type="text"
+                    name="instructions"
+                    onChange={handleChange}
+                    value={myRecipe.instructions}
+                  />
+                </FormGroup>
 
-            <FormGroup className="form-group checkbox">
-              <Checkbox
-                checked={myRecipe.public}
-                onChange={handleChange}
-                name="public"
-                icon={<Done />}
-                color="primary"
-              />
-              <Label for="public">Public</Label>
-            </FormGroup>
-            <div className="submit">
-              <Button onClick={handleSubmit} className="new-button">
-                Submit
-              </Button>
-            </div>
-          </Form>
+                <FormGroup className="form-group checkbox">
+                  <Checkbox
+                    checked={myRecipe.public}
+                    onChange={handleChange}
+                    name="public"
+                    icon={<Done />}
+                    color="primary"
+                  />
+                  <Label for="public">Public</Label>
+                </FormGroup>
+                <div className="submit">
+                  <Button onClick={handleSubmit} className="new-button">
+                    Submit
+                  </Button>
+                </div>
+              </Form>
+          </div>
         </div>
       )}
     </>

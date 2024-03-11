@@ -70,7 +70,7 @@ const SignUp = ({ signUp }) => {
         here.
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignUp;
+export default SignUp

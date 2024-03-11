@@ -22,95 +22,97 @@ const EditRecipe = ({ currentUser, recipes, updateRecipe }) => {
   }
 
   return (
-    <div className="recipe-card">
-      <h1 className="recipe-card-title">Edit Recipe</h1>
-      <Form className="form" onSubmit={handleSubmit}>
-        <FormGroup className="form-group">
-          <Label for="recipeName">Recipe Name:</Label>
-          <Input
-            type="text"
-            id="recipeName"
-            name="recipeName"
-            value={recipeFormData.recipe_name}
-            onChange={(e) =>
-              setRecipeFormData({
-                ...recipeFormData,
-                recipe_name: e.target.value,
-              })
-            }
-          />
-        </FormGroup>
+    <div className="background-image">
+      <div className="recipe-card">
+        <h1 className="recipe-card-title">Edit Recipe</h1>
+        <Form className="form" onSubmit={handleSubmit}>
+          <FormGroup className="form-group">
+            <Label for="recipeName">Recipe Name:</Label>
+            <Input
+              type="text"
+              id="recipeName"
+              name="recipeName"
+              value={recipeFormData.recipe_name}
+              onChange={(e) =>
+                setRecipeFormData({
+                  ...recipeFormData,
+                  recipe_name: e.target.value,
+                })
+              }
+            />
+          </FormGroup>
 
-        <FormGroup className="form-group">
-          <Label for="recipeDescription">Description:</Label>
-          <Input
-            type="text"
-            id="recipeDescription"
-            name="recipeDescription"
-            value={recipeFormData.description}
-            onChange={(e) =>
-              setRecipeFormData({
-                ...recipeFormData,
-                description: e.target.value,
-              })
-            }
-          />
-        </FormGroup>
+          <FormGroup className="form-group">
+            <Label for="recipeDescription">Description:</Label>
+            <Input
+              type="text"
+              id="recipeDescription"
+              name="recipeDescription"
+              value={recipeFormData.description}
+              onChange={(e) =>
+                setRecipeFormData({
+                  ...recipeFormData,
+                  description: e.target.value,
+                })
+              }
+            />
+          </FormGroup>
 
-        <FormGroup className="form-group">
-          <Label for="recipeIngredients">Ingredients:</Label>
-          <Input
-            type="text"
-            id="recipeIngredients"
-            name="recipeIngredients"
-            value={recipeFormData.ingredients}
-            onChange={(e) =>
-              setRecipeFormData({
-                ...recipeFormData,
-                ingredients: e.target.value,
-              })
-            }
-          />
-        </FormGroup>
+          <FormGroup className="form-group">
+            <Label for="recipeIngredients">Ingredients:</Label>
+            <Input
+              type="text"
+              id="recipeIngredients"
+              name="recipeIngredients"
+              value={recipeFormData.ingredients}
+              onChange={(e) =>
+                setRecipeFormData({
+                  ...recipeFormData,
+                  ingredients: e.target.value,
+                })
+              }
+            />
+          </FormGroup>
 
-        <FormGroup className="form-group">
-          <Label for="recipeInstructions">Instructions:</Label>
-          <Input
-            type="textarea"
-            id="recipeInstructions"
-            name="recipeInstructions"
-            value={recipeFormData.instructions}
-            onChange={(e) =>
-              setRecipeFormData({
-                ...recipeFormData,
-                instructions: e.target.value,
-              })
-            }
-          />
-        </FormGroup>
+          <FormGroup className="form-group">
+            <Label for="recipeInstructions">Instructions:</Label>
+            <Input
+              type="textarea"
+              id="recipeInstructions"
+              name="recipeInstructions"
+              value={recipeFormData.instructions}
+              onChange={(e) =>
+                setRecipeFormData({
+                  ...recipeFormData,
+                  instructions: e.target.value,
+                })
+              }
+            />
+          </FormGroup>
 
-        <FormGroup className="form-group">
-          <Label for="recipeImage">Image:</Label>
-          <Input
-            type="text"
-            id="recipeImage"
-            name="recipeImage"
-            value={recipeFormData.image}
-            onChange={(e) =>
-              setRecipeFormData({
-                ...recipeFormData,
-                image: e.target.value,
-              })
-            }
-          />
-        </FormGroup>
+          <FormGroup className="form-group">
+            <Label for="recipeImage">Image:</Label>
+            <Input
+              type="text"
+              id="recipeImage"
+              name="recipeImage"
+              value={recipeFormData.image}
+              onChange={(e) =>
+                setRecipeFormData({
+                  ...recipeFormData,
+                  image: e.target.value,
+                })
+              }
+            />
+          </FormGroup>
 
-        <div className="submit">
-          <Button type="submit" className="new-button">
-            Update
-          </Button>
-        </div>
-      </Form>
+          <div className="submit">
+            <Button type="submit" className="new-button">
+              Update
+            </Button>
+          </div>
+        </Form>
+      </div>
     </div>
   )
 }

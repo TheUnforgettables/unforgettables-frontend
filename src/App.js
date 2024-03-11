@@ -14,8 +14,6 @@ import NotFound from "./pages/NotFound"
 import Potluck from "./pages/Potluck"
 import RecipeDetails from "./pages/RecipeDetails"
 import SignUp from "./pages/SignUp"
-// import mockUsers from "./mockUsers"
-// import mockRecipes from "./mockRecipes"
 import RecipeProtectedIndex from "./pages/RecipeProtectedIndex"
 
 const App = () => {

@@ -18,47 +18,49 @@ const RecipeDetails = ({ recipeDetails = [] }) => {
   }
 
   return (
-    <div className="flex-recipe-details">
-      <Typography level="h1" className="heading">
-        Recipe Details
-      </Typography>
-      {currentRecipe && (
-        <Card variant="outlined" sx={{ width: 600 }} className="recipe-card">
-          <CardOverflow>
-            <AspectRatio>
-              <img
-                top="true"
-                width="100%"
-                src={currentRecipe.image}
-                alt=""
-                className="recipe-picture"
-              />
-            </AspectRatio>
-          </CardOverflow>
-          <CardContent>
-            <div className="recipe-text">
-              <Typography level="h3">{currentRecipe.recipe_name}</Typography>
-              <div className="label">
-                <Typography level="title-md">Description:</Typography>
-                <Typography level="body-md">{currentRecipe.description}</Typography>
+    <div className="background-image">
+      <div className="flex-recipe-details">
+        <Typography level="h1" className="heading">
+          Recipe Details
+        </Typography>
+        {currentRecipe && (
+          <Card variant="outlined" sx={{ width: 600 }} className="recipe-card">
+            <CardOverflow>
+              <AspectRatio>
+                <img
+                  top="true"
+                  width="100%"
+                  src={currentRecipe.image}
+                  alt=""
+                  className="recipe-picture"
+                />
+              </AspectRatio>
+            </CardOverflow>
+            <CardContent>
+              <div className="recipe-text">
+                <Typography level="h3">{currentRecipe.recipe_name}</Typography>
+                <div className="label">
+                  <Typography level="title-md">Description:</Typography>
+                  <Typography level="body-md">{currentRecipe.description}</Typography>
+                </div>
+                <div className="label">
+                  <Typography level="title-md">Ingredients:</Typography>
+                  <Typography level="body-md">{currentRecipe.ingredients}</Typography>
+                </div>
+                <div className="label">
+                  <Typography level="title-md">Instructions:</Typography>
+                  <Typography level="body-md">{currentRecipe.instructions}</Typography>
+                </div>
               </div>
-              <div className="label">
-                <Typography level="title-md">Ingredients:</Typography>
-                <Typography level="body-md">{currentRecipe.ingredients}</Typography>
-              </div>
-              <div className="label">
-                <Typography level="title-md">Instructions:</Typography>
-                <Typography level="body-md">{currentRecipe.instructions}</Typography>
-              </div>
-            </div>
-            <NavLink to={`/potluck`} className="nav-link">
-              <Button color="neutral" variant="solid">
-                Back to the Potluck
-              </Button>
-            </NavLink>
-          </CardContent>
-        </Card>
+              <NavLink to={`/potluck`} className="nav-link">
+                <Button color="neutral" variant="solid">
+                  Back to the Potluck
+                </Button>
+              </NavLink>
+            </CardContent>
+          </Card>
       )}
+      </div>
     </div>
   )
 }

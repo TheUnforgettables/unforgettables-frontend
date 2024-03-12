@@ -20,9 +20,9 @@ const RecipeDetails = ({ recipeDetails = [] }) => {
   return (
     <div className="background-image">
       <div className="flex-recipe-details">
-        <Typography level="h1" className="heading">
-          Recipe Details
-        </Typography>
+        <h1 className="heading"style={{ color: "white" }}>
+          Potluck Recipes
+        </h1>
         {currentRecipe && (
           <Card variant="outlined" sx={{ width: 600 }} className="recipe-card">
             <CardOverflow>
@@ -39,31 +39,33 @@ const RecipeDetails = ({ recipeDetails = [] }) => {
             </CardOverflow>
             <CardContent>
               <div className="recipe-text">
-                <Typography level="h3">{currentRecipe.recipe_name}</Typography>
+                <Typography level="h3" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>{currentRecipe.recipe_name}</Typography>
                 <div className="label">
-                  <Typography level="title-md">Description:</Typography>
-                  <Typography level="body-md">
+                  <Typography level="title-lg" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>Description:</Typography>
+                  <Typography level="body-lg" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>
                     {currentRecipe.description}
                   </Typography>
                 </div>
                 <div className="label">
-                  <Typography level="title-md">Ingredients:</Typography>
-                  <Typography level="body-md">
+                  <Typography level="title-lg" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>Ingredients:</Typography>
+                  <Typography level="body-lg" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>
                     {currentRecipe.ingredients}
                   </Typography>
                 </div>
                 <div className="label">
-                  <Typography level="title-md">Instructions:</Typography>
-                  <Typography level="body-md">
+                  <Typography level="title-lg" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>Instructions:</Typography>
+                  <Typography level="body-lg" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>
                     {currentRecipe.instructions}
                   </Typography>
                 </div>
               </div>
-              <NavLink to={`/potluck`} className="nav-link">
-                <Button color="neutral" variant="solid">
-                  Back to the Potluck
-                </Button>
-              </NavLink>
+              <div className="button-container">
+                <NavLink to={`/potluck`} className="nav-link">
+                  <Button color="neutral" variant="solid" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>
+                    Back to the Potluck
+                  </Button>
+                </NavLink>
+              </div>
             </CardContent>
           </Card>
         )}

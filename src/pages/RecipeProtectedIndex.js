@@ -6,6 +6,7 @@ import AspectRatio from "@mui/joy/AspectRatio"
 import Button from "@mui/joy/Button"
 import { NavLink } from "react-router-dom"
 import { CardBody } from "reactstrap"
+import { red } from "@mui/material/colors"
 
 const RecipeProtectedIndex = ({ recipes, deleteRecipe, currentUser }) => {
   const myRecipes = recipes?.filter(
@@ -15,9 +16,9 @@ const RecipeProtectedIndex = ({ recipes, deleteRecipe, currentUser }) => {
   return (
     <div className="potluck-body">
       <div className="background-image">
-        <Typography level="h1" className="heading">
-          My Recipes
-        </Typography>
+        <h1 className="heading"style={{ color: "white" }}>
+          Potluck Recipes
+        </h1>
         <div className="flex-potluck">
           {myRecipes?.map((recipe, index) => {
             return (
@@ -40,8 +41,8 @@ const RecipeProtectedIndex = ({ recipes, deleteRecipe, currentUser }) => {
                 </CardOverflow>
                 <CardBody>
                   <div className="potluck-text">
-                    <Typography level="h3">{recipe.recipe_name}</Typography>
-                    <Typography level="body-md">{recipe.description}</Typography>
+                    <Typography level="h3" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>{recipe.recipe_name}</Typography>
+                    <Typography level="body-lg" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>{recipe.description}</Typography>
                   </div>
                   <div className="button-container">
                     <NavLink
@@ -49,24 +50,24 @@ const RecipeProtectedIndex = ({ recipes, deleteRecipe, currentUser }) => {
                       className="nav-link"
                     >
                       <div role="button" className="button-wrapper">
-                        <Button color="neutral" variant="solid">
+                        <Button color="neutral" variant="solid" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>
                           Details
                         </Button>
                       </div>
                     </NavLink>
                     <NavLink to={`/editrecipe/${recipe.id}`} className="nav-link">
                       <div role="button" className="button-wrapper">
-                        <Button color="neutral" variant="solid">
+                        <Button color="neutral" variant="solid" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>
                           Edit
                         </Button>
                       </div>
                     </NavLink>
-                    <div role="button" className="button-wrapper">
+                      <div role="button" className="button-wrapper">
                       <Button
                         color="neutral"
                         variant="solid"
-                        onClick={() => deleteRecipe(recipe.id)}
-                      >
+                        style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif', color: red[500] }}
+                        onClick={() => deleteRecipe(recipe.id)}>
                         Delete
                       </Button>
                     </div>

@@ -7,7 +7,7 @@
   text-align: right;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
 }
 
@@ -213,11 +213,6 @@ video {
 
 .links {
   margin-top: 10px;
-}
-
-.links a {
-  color: #007bff;
-  text-decoration: none;
 }
 
 /* AddRecipe specific styles */

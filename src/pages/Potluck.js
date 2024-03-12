@@ -11,9 +11,9 @@ const Potluck = ({ potluck }) => {
   return (
     <div className="background-image">
       <div className="potluck-body">
-        <Typography level="h1" className="heading">
+        <h1 className="heading"style={{ color: "white" }}>
           Potluck Recipes
-        </Typography>
+        </h1>
         <div className="flex-potluck">
           {potluck?.map((potluck, index) => {
             return (
@@ -36,19 +36,21 @@ const Potluck = ({ potluck }) => {
                 </CardOverflow>
                 <CardBody>
                   <div className="potluck-text">
-                    <Typography level="h3">{potluck.recipe_name}</Typography>
-                    <Typography level="body-md">{potluck.description}</Typography>
+                    <Typography level="h3" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>{potluck.recipe_name}</Typography>
+                    <Typography level="body-lg" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>{potluck.description}</Typography>
                   </div>
-                  <NavLink
-                    to={`/recipedetails/${potluck.id}`}
-                    className="nav-link"
-                  >
-                    <div role="button">
-                      <Button color="neutral" variant="solid">
-                        Details
-                      </Button>
-                    </div>
-                  </NavLink>
+                  <div className="button-container">
+                    <NavLink
+                      to={`/recipedetails/${potluck.id}`}
+                      className="nav-link"
+                    >
+                      <div role="button">
+                        <Button color="neutral" variant="solid" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>
+                          Details
+                        </Button>
+                      </div>
+                    </NavLink>
+                  </div>
                 </CardBody>
               </Card>
             )

@@ -6,7 +6,6 @@ import Dropdown from "@mui/joy/Dropdown"
 import Link from "@mui/joy/Link"
 import { useNavigate } from "react-router-dom"
 
-
 const Header = ({ currentUser, logout }) => {
   const navigate = useNavigate()
   const handleClick = () => {
@@ -17,37 +16,37 @@ const Header = ({ currentUser, logout }) => {
   return (
     <header className="header">
       <Dropdown>
-        <MenuButton>Menu</MenuButton>
-        <Menu>
-          <MenuItem>
-            <Link href="/">Home</Link>
+        <MenuButton className="menu-button" >Menu</MenuButton>
+        <Menu className="menu" >
+          <MenuItem className="menu-item" >
+            <Link href="/" className="link">Home</Link>
           </MenuItem>
 
-          <MenuItem>
-            <Link href="/Potluck">Potluck</Link>
+          <MenuItem className="menu-item" >
+            <Link href="/Potluck" className="link">Potluck</Link>
           </MenuItem>
           {currentUser && (
             <>
-              <MenuItem>
-                <Link href="/Myrecipes">My Cookbook</Link>
+              <MenuItem className="menu-item" >
+                <Link href="/Myrecipes" className="link">My Cookbook</Link>
               </MenuItem>
-              <MenuItem>
-                <Link href="/Addrecipe">Add Recipe</Link>
+              <MenuItem className="menu-item" >
+                <Link href="/Addrecipe" className="link">Add Recipe</Link>
               </MenuItem>
-              <MenuItem>
-                <Link onClick={handleClick}>Log out</Link>
+              <MenuItem className="menu-item" >
+                <Link onClick={handleClick} className="link">Log out</Link>
               </MenuItem>
             </>
           )}
 
           {!currentUser && (
             <>
-              <MenuItem>
-                <Link href="/LogIn">Log In</Link>
+              <MenuItem className="menu-item" >
+                <Link href="/LogIn" className="link">Log In</Link>
               </MenuItem>
 
-              <MenuItem>
-                <Link href="/SignUp">Sign Up</Link>
+              <MenuItem className="menu-item" >
+                <Link href="/SignUp" className="link">Sign Up</Link>
               </MenuItem>
             </>
           )}

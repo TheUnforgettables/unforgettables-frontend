@@ -17,7 +17,7 @@ const RecipeProtectedIndex = ({ recipes, deleteRecipe, currentUser }) => {
     <div className="potluck-body">
       <div className="background-image">
         <h1 className="heading"style={{ color: "white" }}>
-          Potluck Recipes
+          My Cookbook
         </h1>
         <div className="flex-potluck">
           {myRecipes?.map((recipe, index) => {

@@ -16,7 +16,7 @@ const AddRecipe = ({ createRecipe, currentUser }) => {
     image: "",
     public: false,
   })
-
+  console.log(myRecipe)
   const handleChange = (e) => {
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value
@@ -78,10 +78,11 @@ const AddRecipe = ({ createRecipe, currentUser }) => {
               <FormGroup className="form-group">
                 <Label for="image">Image:</Label>
                 <Input
-                  type="file"
+                  type="text"
                   name="image"
                   accept="image/*"
-                  onChange={handleImageChange}
+                  onChange={handleChange}
+                  value={myRecipe.image}
                 />
               </FormGroup>
               <FormGroup className="form-group checkbox">

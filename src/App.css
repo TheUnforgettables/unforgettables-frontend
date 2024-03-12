@@ -8,6 +8,12 @@
 }
 
 h1 {
+  max-width: 600;
+  text-align: center;
+}
+
+h2 {
+  max-width: 600;
   text-align: center;
 }
 
@@ -26,7 +32,7 @@ video {
 }
 
 .overlay {
-  padding: 13vw 6vw;
+  padding: 4vw 4vw;
   background-color: transparent;
   z-index: 1;
   width: 100%;
@@ -120,11 +126,6 @@ video {
   z-index: -1;
 }
 
-/* .label {
-  display: flex;
-  margin-bottom: 8px;
-} */
-
 .label > *:first-child {
   font-weight: bold;
   margin-right: 8px;
@@ -144,6 +145,7 @@ video {
 .button-wrapper {
   padding: 10px 0;
 }
+
 .recipe-card {
   background-color: #fff;
   border-radius: 8px;
@@ -168,15 +170,6 @@ video {
 
 .submit {
   text-align: center;
-}
-
-.new-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 /* Common styles */
@@ -285,4 +278,11 @@ video {
 .card-holder {
   margin-top: 0;
   margin-bottom: 100px;
+}
+.menu-button {
+  position: absolute;
+  top: 20px;
+  background-color: #ff6347;
+  color: white;
+  border-radius: 4px;
 }

@@ -1,13 +1,12 @@
 import React from "react"
-import {
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-} from "reactstrap"
+import Card from "@mui/joy/Card"
+import CardOverflow from "@mui/joy/CardOverflow"
+import Typography from "@mui/joy/Typography"
+import AspectRatio from "@mui/joy/AspectRatio"
+import Button from "@mui/joy/Button"
 import { NavLink } from "react-router-dom"
+import { CardBody } from "reactstrap"
+import { red } from "@mui/material/colors"
 
 const RecipeProtectedIndex = ({ recipes, deleteRecipe, currentUser }) => {
   const myRecipes = recipes?.filter(
@@ -15,45 +14,70 @@ const RecipeProtectedIndex = ({ recipes, deleteRecipe, currentUser }) => {
   )
 
   return (
-    <div className="Recipes-body">
-      <h3>My Recipes:</h3>
-      <div className="flex-recipes">
-        {myRecipes?.map((recipe, index) => {
-          return (
-            <Card key={index} className="recipe-cards">
-              <CardImg
-                top
-                width="100%"
-                src={recipe.image}
-                alt=""
-                className="recipe-picture"
-              />
-              <CardBody>
-                <div className="recipe-text">
-                  <CardTitle>
-                    <b>{recipe.recipe_name}</b>
-                  </CardTitle>
-                  <CardSubtitle>
-                    {recipe.ingredients} Ingredients {recipe.instructions},
-                    Instructions
-                  </CardSubtitle>
-                </div>
-                <NavLink
-                  to={`/RecipeDetails/${recipe.id}`}
-                  className="nav-link"
-                >
-                  <Button className="recipe-button">More Details</Button>
-                </NavLink>
-                <NavLink to={`/editrecipe/${recipe.id}`} className="nav-link">
-                  <Button className="recipe-button">edit</Button>
-                </NavLink>
-                <NavLink to="/myrecipes">
-                  <Button onClick = {()=> deleteRecipe(recipe.id)}>Delete Recipe</Button>
-                </NavLink>
-              </CardBody>
-            </Card>
-          )
-        })}
+    <div className="potluck-body">
+      <div className="background-image">
+        <h1 className="heading"style={{ color: "white" }}>
+          My Cookbook
+        </h1>
+        <div className="flex-potluck">
+          {myRecipes?.map((recipe, index) => {
+            return (
+              <Card
+                variant="outlined"
+                sx={{ width: 320 }}
+                key={index}
+                className="potluck-card"
+                style={{ marginBottom: "20px" }}
+              >
+                <CardOverflow>
+                  <AspectRatio ratio={16 / 9}>
+                    <img
+                      top="true"
+                      width="100%"
+                      src={recipe.image}
+                      alt=""
+                      className="potluck-picture"
+                    />
+                  </AspectRatio>
+                </CardOverflow>
+                <CardBody>
+                  <div className="potluck-text">
+                    <Typography level="h3" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>{recipe.recipe_name}</Typography>
+                    <Typography level="body-lg" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>{recipe.description}</Typography>
+                  </div>
+                  <div className="button-container">
+                    <NavLink
+                      to={`/recipedetails/${recipe.id}`}
+                      className="nav-link"
+                    >
+                      <div role="button" className="button-wrapper">
+                        <Button color="neutral" variant="solid" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>
+                          Details
+                        </Button>
+                      </div>
+                    </NavLink>
+                    <NavLink to={`/editrecipe/${recipe.id}`} className="nav-link">
+                      <div role="button" className="button-wrapper">
+                        <Button color="neutral" variant="solid" style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif' }}>
+                          Edit
+                        </Button>
+                      </div>
+                    </NavLink>
+                      <div role="button" className="button-wrapper">
+                      <Button
+                        color="neutral"
+                        variant="solid"
+                        style={{ fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif', color: red[500] }}
+                        onClick={() => deleteRecipe(recipe.id)}>
+                        Delete
+                      </Button>
+                    </div>
+                  </div>
+                </CardBody>
+              </Card>
+            )
+          })}
+        </div>
       </div>
     </div>
   )

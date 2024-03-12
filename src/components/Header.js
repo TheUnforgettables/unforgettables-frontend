@@ -3,11 +3,8 @@ import Menu from "@mui/joy/Menu"
 import MenuButton from "@mui/joy/MenuButton"
 import MenuItem from "@mui/joy/MenuItem"
 import Dropdown from "@mui/joy/Dropdown"
-import { Nav } from "reactstrap"
 import Link from "@mui/joy/Link"
 import { useNavigate } from "react-router-dom"
-
-import logoUF from "../assets/logoUF.jpeg"
 
 const Header = ({ currentUser, logout }) => {
   const navigate = useNavigate()
@@ -17,42 +14,70 @@ const Header = ({ currentUser, logout }) => {
   }
 
   return (
-    <header>
-      <Nav>
-        <img src={logoUF} alt="company logo" className="logo" />
-      </Nav>
+    <header className="header">
       <Dropdown>
-        <MenuButton>Menu</MenuButton>
-        <Menu>
-          <MenuItem>
-            <Link href="/">Home</Link>
+        <MenuButton
+          sx={{
+            border: "none",
+            backgroundColor: "transparent",
+            color: "white",
+            fontWeight: 700,
+            opacity: "100%", 
+            fontSize: "28px",
+            fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif',
+            '&:hover': { 
+              backgroundColor: "transparent", color: "red"}
+            
+          }}
+          className="menu-button"
+        >
+          {" "}
+          Menu
+        </MenuButton>
+        <Menu className="menu">
+          <MenuItem className="menu-item">
+            <Link href="/" className="link">
+              Home
+            </Link>
           </MenuItem>
 
-          <MenuItem>
-            <Link href="/Potluck">Community</Link>
+          <MenuItem className="menu-item">
+            <Link href="/Potluck" className="link">
+              Potluck
+            </Link>
           </MenuItem>
           {currentUser && (
             <>
-              <MenuItem>
-                <Link href="/Myrecipes">Cookbook</Link>
+              <MenuItem className="menu-item">
+                <Link href="/Myrecipes" className="link">
+                  My Cookbook
+                </Link>
               </MenuItem>
-              <MenuItem>
-                <Link href="/Addrecipe">Add Recipe</Link>
+              <MenuItem className="menu-item">
+                <Link href="/Addrecipe" className="link">
+                  Add Recipe
+                </Link>
               </MenuItem>
-              <MenuItem>
-                <Link onClick={handleClick}>Log out</Link>
+              <MenuItem className="menu-item">
+                <Link onClick={handleClick} className="link">
+                  Log out
+                </Link>
               </MenuItem>
             </>
           )}
 
           {!currentUser && (
             <>
-              <MenuItem>
-                <Link href="/LogIn">Log In</Link>
+              <MenuItem className="menu-item">
+                <Link href="/LogIn" className="link">
+                  Log In
+                </Link>
               </MenuItem>
 
-              <MenuItem>
-                <Link href="/SignUp">Sign Up</Link>
+              <MenuItem className="menu-item">
+                <Link href="/SignUp" className="link">
+                  Sign Up
+                </Link>
               </MenuItem>
             </>
           )}

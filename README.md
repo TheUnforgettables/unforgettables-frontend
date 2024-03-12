@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Unforgettable
+Unforgettable is a web application that allows users to create and share digital heirlooms of their family's culinary journey. The application provides features such as creating and managing recipes, creating potlucks, and managing a personal cookbook.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
+To get started with Unforgettable, follow these simple steps:
 
-## Available Scripts
+Clone the repository
+Install the dependencies by running npm install
+Start the development server by running npm start
 
-In the project directory, you can run:
+### Features
+Create and manage recipes
+Create potlucks
+Manage a personal cookbook
+Share recipes with family and friends
 
-### `yarn start`
+### Technologies Used
+React
+Material-UI
+Redux
+React Router
+Firebase
+Node.js
+Express.js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Contributing
+We welcome contributions to Unforgettable. To contribute, follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Fork the repository
+Create a new branch
+Make your changes
+Write tests for your changes
+Run the tests to ensure they pass
+Commit your changes
+Push your changes to your forked repository
+Open a pull request
 
-### `yarn test`
+## License
+Unforgettable is open-sourced under the MIT License.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Contact
+For any questions or concerns, please contact us by email at the.la.unforgettables@gmail.com.
 
-### `yarn build`
+Please note that this is a basic template and you may need to add more details and sections to the README file depending on the complexity of your app.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Also, you can use the readme.md file to add more details about the app like how to use the app, how to contribute to the app, any dependencies that the app uses, and any other information that you think is important for the users of your app.

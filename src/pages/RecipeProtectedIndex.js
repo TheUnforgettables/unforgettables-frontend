@@ -27,6 +27,7 @@ const RecipeProtectedIndex = ({ recipes, deleteRecipe, currentUser }) => {
                 sx={{ width: 320 }}
                 key={index}
                 className="potluck-card"
+                style={{ marginBottom: "20px" }}
               >
                 <CardOverflow>
                   <AspectRatio ratio={16 / 9}>

@@ -2,25 +2,15 @@
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   color: black;
 }
-
 .header {
-  text-align: right;
+  text-align: center;
+  position: fixed;
+  width: 100%;
 }
-
-h1 {
+h1, h2 {
   max-width: 600;
   text-align: center;
 }
-
-h2 {
-  max-width: 600;
-  text-align: center;
-}
-
-.heading {
-  text-align: center;
-}
-
 video {
   position: fixed;
   top: 0;
@@ -30,14 +20,12 @@ video {
   min-height: 100vh;
   z-index: -1;
 }
-
 .overlay {
   padding: 4vw 4vw;
   background-color: transparent;
   z-index: 1;
   width: 100%;
 }
-
 .title {
   color: black;
   font-size: 50px;
@@ -45,14 +33,12 @@ video {
   letter-spacing: 4px;
   width: 100%;
 }
-
 .app-details {
   text-align: center;
   font-weight: 5;
   letter-spacing: 4px;
   width: 100%;
 }
-
 /* Footer Styling */
 .footer {
   background-color: transparent;
@@ -65,7 +51,6 @@ video {
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.3);
 }
-
 .footer h4 {
   color: white;
   width: 100%;
@@ -75,47 +60,37 @@ video {
   text-transform: uppercase;
   letter-spacing: 3px;
 }
-
 .footer .col-md-4 {
   text-align: center;
   list-style: none;
 }
-
 .footer a {
   color: #fff;
   text-decoration: none;
   display: inline;
   font-weight: bold;
 }
-
 .footer a:hover {
   color: #f92d2d;
 }
-
 .row {
   width: 100%;
 }
-
 /* Card styling*/
 
-.recipe-text,
-.potluck-text {
+.recipe-text, .potluck-text {
   padding: 10px;
 }
-
-.flex-recipes,
-.flex-potluck {
+.flex-recipes, .flex-potluck {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-
 .flex-recipe-details {
   display: flex;
   flex-direction: column;
   align-items: space-around;
 }
-
 .not-found-background {
   position: center;
   top: 0;
@@ -125,7 +100,6 @@ video {
   min-height: 100%;
   z-index: -1;
 }
-
 .label > *:first-child {
   font-weight: bold;
   margin-right: 8px;
@@ -135,17 +109,14 @@ video {
   height: 100%;
   object-fit: cover;
 }
-
 .button-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-
 .button-wrapper {
   padding: 10px 0;
 }
-
 .recipe-card {
   background-color: #fff;
   border-radius: 8px;
@@ -153,36 +124,29 @@ video {
   max-width: 400px;
   margin: 0 auto;
 }
-
 .recipe-card-title {
   text-align: center;
   margin-bottom: 20px;
 }
-
 .form-group {
   margin-bottom: 20px;
 }
-
 .checkbox {
   display: flex;
   align-items: center;
 }
-
 .submit {
   text-align: center;
 }
-
 /* Common styles */
 .auth-body {
   margin: auto;
   width: 50%;
   padding: 20px;
 }
-
 .form-div {
   width: 100%;
 }
-
 .field {
   width: 100%;
   padding: 8px;
@@ -190,11 +154,9 @@ video {
   border-radius: 4px;
   border: 1px solid #ccc;
 }
-
 .auth-flex {
   display: block;
 }
-
 .actions {
   width: 100%;
   padding: 10px;
@@ -203,11 +165,9 @@ video {
   border-radius: 4px;
   cursor: pointer;
 }
-
 .links {
   margin-top: 10px;
 }
-
 /* AddRecipe specific styles */
 .recipe-card {
   margin: auto;
@@ -216,44 +176,35 @@ video {
   background-color: #f8f9fa;
   border-radius: 8px;
 }
-
 .recipe-card-title {
   text-align: center;
   margin-bottom: 20px;
 }
-
 .form {
   width: 100%;
 }
-
 .form-group {
   margin-bottom: 20px;
 }
-
 .checkbox {
   display: flex;
   align-items: center;
 }
-
 .submit {
   text-align: center;
 }
-
 /* Common styles */
 .auth-body {
   margin: auto;
   width: 50%;
   padding: 20px;
 }
-
 .form-div {
   width: 100%;
 }
-
 .auth-flex {
   display: block;
 }
-
 .not-found-container {
   display: flex;
   justify-content: center;
@@ -265,24 +216,16 @@ video {
   max-width: 100%;
   max-height: 100%;
 }
-
 .background-image {
   background-image: url("/src/assets/recipe1.png");
+  position: fixed;
   background-size: cover;
   min-width: 100vw;
   min-height: 100vh;
-  padding: 40px;
+  padding: 100px 10px 0px 10px;
   z-index: -1;
 }
-
 .card-holder {
   margin-top: 0;
   margin-bottom: 100px;
-}
-.menu-button {
-  position: absolute;
-  top: 20px;
-  background-color: #ff6347;
-  color: white;
-  border-radius: 4px;
 }

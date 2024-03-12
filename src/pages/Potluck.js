@@ -22,12 +22,13 @@ const Potluck = ({ potluck }) => {
                 sx={{ width: 320 }}
                 key={index}
                 className="potluck-card"
+                style={{ marginBottom: "20px" }}
               >
                 <CardOverflow>
                   <AspectRatio>
                     <img
                       top="true"
-                      width="100%"
+                      width="0%"
                       src={potluck.image}
                       alt=""
                       className="potluck-picture"

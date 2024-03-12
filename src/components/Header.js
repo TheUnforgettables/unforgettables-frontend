@@ -16,37 +16,68 @@ const Header = ({ currentUser, logout }) => {
   return (
     <header className="header">
       <Dropdown>
-        <MenuButton className="menu-button" >Menu</MenuButton>
-        <Menu className="menu" >
-          <MenuItem className="menu-item" >
-            <Link href="/" className="link">Home</Link>
+        <MenuButton
+          sx={{
+            border: "none",
+            backgroundColor: "transparent",
+            color: "white",
+            fontWeight: 700,
+            opacity: "100%", 
+            fontSize: "28px",
+            fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif',
+            '&:hover': { 
+              backgroundColor: "transparent", color: "red"}
+            
+          }}
+          className="menu-button"
+        >
+          {" "}
+          Menu
+        </MenuButton>
+        <Menu className="menu">
+          <MenuItem className="menu-item">
+            <Link href="/" className="link">
+              Home
+            </Link>
           </MenuItem>
 
-          <MenuItem className="menu-item" >
-            <Link href="/Potluck" className="link">Potluck</Link>
+          <MenuItem className="menu-item">
+            <Link href="/Potluck" className="link">
+              Potluck
+            </Link>
           </MenuItem>
           {currentUser && (
             <>
-              <MenuItem className="menu-item" >
-                <Link href="/Myrecipes" className="link">My Cookbook</Link>
+              <MenuItem className="menu-item">
+                <Link href="/Myrecipes" className="link">
+                  My Cookbook
+                </Link>
               </MenuItem>
-              <MenuItem className="menu-item" >
-                <Link href="/Addrecipe" className="link">Add Recipe</Link>
+              <MenuItem className="menu-item">
+                <Link href="/Addrecipe" className="link">
+                  Add Recipe
+                </Link>
               </MenuItem>
-              <MenuItem className="menu-item" >
-                <Link onClick={handleClick} className="link">Log out</Link>
+              <MenuItem className="menu-item">
+                <Link onClick={handleClick} className="link">
+                  Log out
+                </Link>
               </MenuItem>
             </>
           )}
 
           {!currentUser && (
             <>
-              <MenuItem className="menu-item" >
-                <Link href="/LogIn" className="link">Log In</Link>
+              <MenuItem className="menu-item">
+                <Link href="/LogIn" className="link">
+                  Log In
+                </Link>
               </MenuItem>
 
-              <MenuItem className="menu-item" >
-                <Link href="/SignUp" className="link">Sign Up</Link>
+              <MenuItem className="menu-item">
+                <Link href="/SignUp" className="link">
+                  Sign Up
+                </Link>
               </MenuItem>
             </>
           )}

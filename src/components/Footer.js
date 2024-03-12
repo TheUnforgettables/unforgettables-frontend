@@ -25,10 +25,10 @@ const Footer = () => {
         </div>
         <div className="col-md-4">
           <h4>Connect With Us</h4>
-          <NavLink to="/facebook">Facebook</NavLink>&emsp;
-          <NavLink to="/instagram">Instagram</NavLink>
+          <NavLink to="https://www.facebook.com/">Facebook</NavLink>&emsp;
+          <NavLink to="https://www.instagram.com/">Instagram</NavLink>
           <li>
-            <NavLink to="/twitter">Twitter</NavLink>
+            <NavLink to="https://twitter.com/?lang=en">Twitter</NavLink>
           </li>
         </div>
       </div>

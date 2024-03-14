@@ -33,7 +33,7 @@ const App = () => {
   }, [])
 
   const logIn = (userInfo) => {
-    fetch("http://localhost:3000/login", {
+    fetch("https://unforgettables-backend.onrender.com/login", {
       body: JSON.stringify(userInfo),
       headers: {
         "Content-Type": "application/json",
@@ -56,7 +56,7 @@ const App = () => {
   }
 
   const signUp = (userInfo) => {
-    fetch("http://localhost:3000/signup", {
+    fetch("https://unforgettables-backend.onrender.com/signup", {
       body: JSON.stringify(userInfo),
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const App = () => {
   }
 
   const logout = () => {
-    fetch("http://localhost:3000/logout", {
+    fetch("https://unforgettables-backend.onrender.com/logout", {
       headers: {
         "Content-Type": "application/json",
         Authorization: localStorage.getItem("token"),
@@ -98,14 +98,14 @@ const App = () => {
   }
 
   const readRecipe = () => {
-    fetch("http://localhost:3000/recipes")
+    fetch("https://unforgettables-backend.onrender.com/recipes")
       .then((response) => response.json())
       .then((payload) => setRecipes(payload))
       .catch((error) => console.log(error))
   }
 
   const createRecipe = (newRecipe) => {
-    fetch("http://localhost:3000/recipes/", {
+    fetch("https://unforgettables-backend.onrender.com/recipes/", {
       body: JSON.stringify(newRecipe),
       method: "Post",
       headers: {
@@ -121,7 +121,7 @@ const App = () => {
   }
 
   const updateRecipe = (recipe, id) => {
-    fetch(`http://localhost:3000/recipes/${id}`, {
+    fetch(`https://unforgettables-backend.onrender.com/recipes/${id}`, {
       body: JSON.stringify(recipe),
       method: "PATCH",
       headers: {
@@ -135,7 +135,7 @@ const App = () => {
   }
 
   const deleteRecipe = (id) => {
-    fetch(`http://localhost:3000/recipes/${id}`, {
+    fetch(`https://unforgettables-backend.onrender.com/recipes/${id}`, {
       headers: {
         "Content-Type": "application/json",
       },

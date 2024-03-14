@@ -20,14 +20,13 @@ const Header = ({ currentUser, logout }) => {
           sx={{
             border: "none",
             backgroundColor: "transparent",
-            color: "white",
+            color: "grey",
             fontWeight: 700,
             opacity: "100%", 
-            fontSize: "28px",
+            fontSize: "35px",
             fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif',
             '&:hover': { 
               backgroundColor: "transparent", color: "red"}
-            
           }}
           className="menu-button"
         >

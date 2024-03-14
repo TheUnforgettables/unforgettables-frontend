@@ -11,16 +11,16 @@ const Footer = () => {
             <NavLink to="/about">About Us</NavLink>
           </li>
           <li>
-            <NavLink to="/contact">Contact Us</NavLink>
+            <NavLink to="https://github.com/TheUnforgettables">Contact Us</NavLink>
           </li>
         </div>
         <div className="col-md-4">
           <h4>Legal</h4>
           <li>
-            <NavLink to="/privacy">Privacy</NavLink>
+            <NavLink to="https://learnacademy.org/privacy-policy">Privacy</NavLink>
           </li>
           <li>
-            <NavLink to="/terms">Terms of Use</NavLink>
+            <NavLink to="https://learnacademy.org/terms-conditions">Terms of Use</NavLink>
           </li>
         </div>
         <div className="col-md-4">

@@ -20,7 +20,7 @@ import Garry from "../assets/IMG_123.jpg"
 export default function BioCard() {
   return (
     <>
-      <h1>Meet The Team</h1>
+      <h1 className = "about-us">Meet The Team</h1>
       <Grid
         container
         spacing={1}
@@ -281,9 +281,8 @@ export default function BioCard() {
             </Chip>
             <Typography level="title-lg">Mckenley Scullark</Typography>
             <Typography level="body-sm" sx={{ maxWidth: "24ch" }}>
-              Project manager that offers the front end skills and knowledge
-              required for a full stack developer, along with a eagerness to
-              learn new roles.
+              Project Lead and Full stack developer with strong front-end skills and a passion for learning new
+              roles.
             </Typography>
             <Box
               sx={{
@@ -391,7 +390,7 @@ export default function BioCard() {
                 borderColor: "background.surface",
               }}
             >
-              TECHNICAL LEAD
+              PRODUCT MANAGER 
             </Chip>
             <Typography level="title-lg">Garry Greathouse</Typography>
             <Typography level="body-sm" sx={{ maxWidth: "24ch" }}>
